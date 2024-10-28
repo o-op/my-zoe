@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Movement Image Display</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            background-image: url('background.webp'); /* Ensure this is correct */
+            background-size: cover;
+            cursor: url('cursors/arrow.png'), auto; /* Custom arrow cursor */
+        }
+        .image {
+            position: absolute;
+            opacity: 1;
+            pointer-events: none;
+            transition: opacity 0.5s;
+            will-change: opacity;
+        }
+        nav {
+            position: absolute;
+            top: 3vw;
+            left: 5vw;
+            width: calc(100% - 10vw);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+        }
+        nav a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; /* Extra bold weight */
+            font-size: 2vw; /* Font size in vw */
+            color: #FF53CB; /* Default color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s, text-shadow 0.3s; /* Smooth transition for hover effect */
+        }
+        nav a:hover {
+           /* color: #FF007F; /* Change to a vibrant pink on hover */
+           /* text-shadow: 0 0 5px rgba(255, 0, 127, 1), 0 0 10px rgba(255, 0, 127, 1); /* Add a glowing effect */
+        }
+        nav a.intense-hover {
+          /*  transition: color 0.3s, text-shadow 0.3s; /* Ensure transition applies to color and text-shadow */
+        }
+       nav a.intense-hover:hover {
+   /* color: #FF007F; /* Change to a vibrant pink on hover */
+ /*   text-shadow: 
+      /*  0 0 15px rgba(255, 0, 127, 1),   /* Bright inner glow */
+      /*  0 0 30px rgba(255, 0, 127, 0.8),  /* Larger outer glow */
+     /*   0 0 50px rgba(255, 0, 127, 0.5);  /* Faint glow for extra size */
+}
+        .make-up-artist {
+            position: absolute;
+            bottom: 3vw;
+            left: 5vw;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2vw;
+            color: #FF53CB;
+            text-transform: uppercase;
+            z-index: 1001;
+        }
+        input, textarea, select {
+            cursor: url('cursors/text.png'), auto;
+        }
+        a, button {
+            cursor: url('cursors/pointer.png'), pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Menu -->
+<nav>
+    <a href="#"class="intense-hover">ZOË DERKS</a>
+    <a href="#">EDITORIAL</a> <!-- Added the intense-hover class -->
+    <a href="#">COMMISSIONED</a>
+    <a href="#">ABOUT</a>
+</nav>
+
+<!-- Bottom Text -->
+<div class="make-up-artist">MAKE UP ARTIST</div>
+
+<script>
+    const images = [
+        'Editorial_002.webp',
+        'Editorial_005.webp',
+        'Commissioned_011.webp',
+        'Editorial_003.webp',
+        'Commissioned_002.webp',
+        'Editorial_011.webp',
+        'Commissioned_023.webp',
+        'Editorial_015.webp',
+        'Commissioned_003.webp',
+        'Editorial_014.webp',
+        'Commissioned_018.webp',
+        'Commissioned_019.webp',
+        'Commissioned_001.webp',
+        'Editorial_009.webp',
+        'Editorial_001.webp'
+    ];
+
+    // Preload images with lazy loading enabled
+    const preloadImages = () => {
+        return images.map((src) => {
+            const img = new Image();
+            img.src = src; 
+            img.loading = 'lazy'; // Enables lazy loading
+            return img;
+        });
+    };
+
+    const loadedImages = preloadImages();
+
+    let cursorMovementThreshold = 0.03;
+    let cursorMoved = 0;
+    let currentImageIndex = 0;
+    let imageElement;
+
+    // Initialize a single image element
+    const initImageElement = () => {
+        imageElement = document.createElement('img');
+        imageElement.className = 'image';
+        imageElement.style.width = (Math.random() * (60 - 30) + 30) + 'vw'; // Set random width
+        document.body.appendChild(imageElement);
+    };
+
+    initImageElement();
+
+    // Mousemove event with throttling
+    let isThrottled = false;
+
+    document.addEventListener('mousemove', (event) => {
+        if (!isThrottled) {
+            isThrottled = true;
+
+            requestAnimationFrame(() => {
+                if (cursorMoved >= cursorMovementThreshold) {
+                    imageElement.src = loadedImages[currentImageIndex].src;
+                    const imgWidth = imageElement.offsetWidth;
+                    const imgHeight = imageElement.offsetHeight;
+
+                    imageElement.style.left = (event.clientX - imgWidth / 2) + 'px'; // Position the image
+                    imageElement.style.top = (event.clientY - imgHeight / 2) + 'px'; // Position the image
+                    
+                    cursorMoved = 0;
+                    currentImageIndex = (currentImageIndex + 1) % loadedImages.length; // Cycle through images
+                }
+                cursorMoved += Math.abs(event.movementX) / window.innerWidth + Math.abs(event.movementY) / window.innerHeight;
+                isThrottled = false;
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
