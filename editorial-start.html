@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            background-color: #f0f0f0; /* Optional: Background color for the subpage */
+        }
+
+        nav {
+            position: absolute;
+            top: 3vw;
+            left: 5vw;
+            display: grid;
+            grid-template-columns: 1fr auto; /* Keeps "ZOË DERKS" on the left and nav-items on the right */
+            align-items: center;
+            width: calc(100% - 10vw); /* Total width minus the left and right padding */
+            z-index: 1001;
+        }
+
+        .zoe-derks {
+            font-family: 'Lato', sans-serif; /* Changed to Lato */
+            font-weight: 800; /* Extra bold weight */
+            font-size: 2.2vw; /* Size for the name */
+            letter-spacing: 0px; /* Adjust spacing between letters */
+            color: #FF53CB; /* Default color */
+            text-decoration: none; /* Remove underline */
+            margin-right: 0.1vw; /* Space between ZOË DERKS and other items */
+        }
+
+        .nav-items {
+            display: grid;
+            grid-template-columns: repeat(3, auto); /* Ensures three equal columns for each item */
+            gap: 9.2vw; /* Space between items */
+            justify-items: center; /* Center items in their respective grid cells */
+        }
+
+        .nav-item {
+            font-family: 'Lato', sans-serif; /* Ensure this is Lato */
+            font-weight: 800; /* Extra bold weight */
+            font-size: 1.1vw; /* Keep this for responsiveness */
+            letter-spacing: 0.2px; /* Adjust spacing between letters */
+            color: #FF53CB; /* Default color */
+            text-decoration: none; /* Remove underline */
+            padding: 0.5vw; /* Add padding for box effect */
+            border: 2px solid transparent; /* Optional: Add border for box effect */
+        }
+
+        /* Image gallery styles */
+        .image-gallery {
+            display: flex;
+            overflow-x: auto; /* Allows horizontal scrolling */
+            overflow-y: hidden; /* Hides vertical overflow */
+            width: calc(100% - 10vw); /* Full width minus padding */
+            height: calc(100vh - 20vw); /* Max height minus nav space */
+            position: absolute;
+            top: 25vw; /* Adjust based on your layout */
+            left: 5vw; /* Same left position as the nav */
+            white-space: nowrap; /* Prevents wrapping of images */
+        }
+
+        .image-gallery img {
+            height: 100%; /* Keep image height to fill the gallery */
+            width: auto; /* Maintain aspect ratio */
+            flex-shrink: 0; /* Prevent images from shrinking */
+            cursor: pointer; /* Change cursor to indicate clickable images */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1002; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+            justify-content: center; /* Center modal content */
+            align-items: center; /* Center modal content */
+        }
+
+        .modal img {
+            max-width: 90%; /* Responsive image size */
+            max-height: 90%; /* Responsive image size */
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation Menu -->
+<nav>
+    <span class="zoe-derks">ZOË DERKS</span>
+    <div class="nav-items">
+        <a href="editorial.html" class="nav-item">EDITORIAL</a>
+        <a href="commissioned.html" class="nav-item">COMMISSIONED</a>
+        <a href="about.html" class="nav-item">ABOUT</a>
+    </div>
+</nav>
+
+<!-- Image Gallery Section -->
+<div class="image-gallery">
+    <img src="Editorial_001.webp" alt="Editorial Image 1" onclick="openModal(this.src)">
+    <img src="Editorial_002.webp" alt="Editorial Image 2" onclick="openModal(this.src)">
+    <img src="Editorial_003.webp" alt="Editorial Image 3" onclick="openModal(this.src)">
+    <img src="Editorial_004.webp" alt="Editorial Image 4" onclick="openModal(this.src)">
+    <img src="Editorial_005.webp" alt="Editorial Image 5" onclick="openModal(this.src)">
+    <img src="Editorial_006.webp" alt="Editorial Image 6" onclick="openModal(this.src)">
+    <img src="Editorial_007.webp" alt="Editorial Image 7" onclick="openModal(this.src)">
+    <img src="Editorial_008.webp" alt="Editorial Image 8" onclick="openModal(this.src)">
+    <img src="Editorial_009.webp" alt="Editorial Image 9" onclick="openModal(this.src)">
+    <img src="Editorial_010.webp" alt="Editorial Image 10" onclick="openModal(this.src)">
+    <img src="Editorial_011.webp" alt="Editorial Image 11" onclick="openModal(this.src)">
+    <img src="Editorial_012.webp" alt="Editorial Image 12" onclick="openModal(this.src)">
+    <img src="Editorial_013.webp" alt="Editorial Image 13" onclick="openModal(this.src)">
+    <img src="Editorial_014.webp" alt="Editorial Image 14" onclick="openModal(this.src)">
+    <img src="Editorial_015.webp" alt="Editorial Image 15" onclick="openModal(this.src)">
+    <img src="Editorial_016.webp" alt="Editorial Image 16" onclick="openModal(this.src)">
+    <img src="Editorial_017.webp" alt="Editorial Image 17" onclick="openModal(this.src)">
+    <img src="Editorial_018.webp" alt="Editorial Image 18" onclick="openModal(this.src)">
+    <img src="Editorial_019.webp" alt="Editorial Image 19" onclick="openModal(this.src)">
+    <img src="Editorial_020.webp" alt="Editorial Image 20" onclick="openModal(this.src)">
+</div>
+
+<!-- Modal for Enlarged Images -->
+<div class="modal" id="myModal" onclick="closeModal()">
+    <img id="modalImage" src="" alt="Enlarged Image">
+</div>
+
+<script>
+    function openModal(src) {
+        document.getElementById('modalImage').src = src; // Set the source of the modal image
+        document.getElementById('myModal').style.display = 'flex'; // Show the modal
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none'; // Hide the modal
+    }
+</script>
+
+</body>
+</html>
