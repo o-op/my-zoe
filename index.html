@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursor Movement Image Display</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@800&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -25,45 +26,42 @@
             position: absolute;
             top: 3vw;
             left: 5vw;
-            width: calc(100% - 10vw);
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto; /* Keeps "ZOË DERKS" on the left and nav-items on the right */
             align-items: center;
+            width: calc(100% - 10vw); /* Total width minus the left and right padding */
             z-index: 1001;
         }
-        nav a {
-            font-family: 'Montserrat', sans-serif;
+
+        .zoe-derks {
+            font-family: 'Lato', sans-serif; /* Changed to Lato */
             font-weight: 800; /* Extra bold weight */
-            font-size: 2vw; /* Font size in vw */
+            font-size: 2.2vw; /* Size for the name */
+            letter-spacing: 0px; /* Adjust spacing between letters */
             color: #FF53CB; /* Default color */
             text-decoration: none; /* Remove underline */
-            transition: color 0.3s, text-shadow 0.3s; /* Smooth transition for hover effect */
+            margin-right: 0.1vw; /* Space between ZOË DERKS and other items */
         }
-        nav a:hover {
-           /* color: #FF007F; /* Change to a vibrant pink on hover */
-           /* text-shadow: 0 0 5px rgba(255, 0, 127, 1), 0 0 10px rgba(255, 0, 127, 1); /* Add a glowing effect */
+        .nav-items {
+            display: grid;
+            grid-template-columns: repeat(3, auto); /* Ensures three equal columns for each item */
+            gap: 9.2vw; /* Space between items */
+            justify-items: center; /* Center items in their respective grid cells */
         }
-        nav a.intense-hover {
-          /*  transition: color 0.3s, text-shadow 0.3s; /* Ensure transition applies to color and text-shadow */
+
+
+        .nav-item {
+            font-family: 'Lato', sans-serif; /* Ensure this is Lato */
+            font-weight: 800; /* Extra bold weight */
+            font-size: 1.1vw; /* Keep this for responsiveness; you can update later */
+            letter-spacing: 0.2px; /* Adjust spacing between letters */
+            color: #FF53CB; /* Default color */
+            text-decoration: none; /* Remove underline */
+            padding: 0.5vw; /* Add padding for box effect */
+            border: 2px solid transparent; /* Optional: Add border for box effect */
+            transition: color 0.3s, text-shadow 0.3s, border-color 0.3s; /* Smooth transition for hover effect */
         }
-       nav a.intense-hover:hover {
-   /* color: #FF007F; /* Change to a vibrant pink on hover */
- /*   text-shadow: 
-      /*  0 0 15px rgba(255, 0, 127, 1),   /* Bright inner glow */
-      /*  0 0 30px rgba(255, 0, 127, 0.8),  /* Larger outer glow */
-     /*   0 0 50px rgba(255, 0, 127, 0.5);  /* Faint glow for extra size */
-}
-        .make-up-artist {
-            position: absolute;
-            bottom: 3vw;
-            left: 5vw;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 2vw;
-            color: #FF53CB;
-            text-transform: uppercase;
-            z-index: 1001;
-        }
+
         input, textarea, select {
             cursor: url('cursors/text.png'), auto;
         }
@@ -76,14 +74,13 @@
 
 <!-- Navigation Menu -->
 <nav>
-    <a href="#"class="intense-hover">ZOË DERKS</a>
-    <a href="#">EDITORIAL</a> <!-- Added the intense-hover class -->
-    <a href="#">COMMISSIONED</a>
-    <a href="#">ABOUT</a>
+    <span class="zoe-derks">ZOË DERKS</span>
+    <div class="nav-items">
+        <a href="#" class="nav-item">EDITORIAL</a>
+        <a href="#" class="nav-item">COMMISSIONED</a>
+        <a href="#" class="nav-item">ABOUT</a>
+    </div>
 </nav>
-
-<!-- Bottom Text -->
-<div class="make-up-artist">MAKE UP ARTIST</div>
 
 <script>
     const images = [
