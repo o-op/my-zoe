@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ZOË DERKS</title>
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0; /* Remove body margin to avoid pushing the overlay */
+            font-family: 'Lato', sans-serif;
+            background-color: #FF53CB;
+            color: #000;
+            padding: 0; /* No padding on body */
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .overlay {
+            display: flex; /* Enable flexbox layout */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center children horizontally */
+            justify-content: center; /* Center children vertically */
+            width: 100%;
+            height: 100vh; /* Full height */
+            padding: 30px; /* Padding around the overlay */
+            box-sizing: border-box; /* Include padding in width and height calculations */
+            position: fixed; /* Ensure it covers the entire viewport */
+            top: 0; /* Start from the top */
+            left: 0; /* Start from the left */
+            background-color: rgba(255, 83, 203, 0.9); /* Optional: add a semi-transparent background */
+            z-index: 1000; /* Ensure it appears above other content */
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 4rem;
+            color: #000;
+            cursor: pointer;
+            position: absolute; /* Use absolute positioning */
+            top: 10px; /* Adjust this value to move it vertically */
+            right: 20px; /* Adjust this value to move it horizontally */
+            margin-bottom: 20px;
+        }
+
+        .text-block {
+            width: 50%; /* Full width for text blocks */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-weight: 650;
+            color: #000;
+            font-size: 0.8rem;
+            margin: 10px 0; /* Consistent spacing above and below headings */
+        }
+
+        p {
+            font-weight: 350;
+            font-size: 0.7rem;
+            letter-spacing: 0.015rem;
+            color: #000;
+            margin: 8px 0; /* Reduced spacing between paragraphs */
+            line-height: 1.5;
+        }
+
+        a {
+            color: #000;
+            text-decoration: underline;
+        }
+        
+        ul {
+            list-style-type: none; /* Remove default bullets */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        li {
+            margin-bottom: 0px; /* Space between list items */
+            font-weight: 350;
+            font-size: 0.7rem; /* Adjust font size as needed */
+            line-height: 1.5; /* Adjust line height for more space between lines */
+        }
+        
+        .info-container {
+            width: 60%; /* Width for the info container */
+            max-width: 800px; /* Limit the maximum width */
+            margin: 0 auto; /* Center the container */
+            padding: 20px; /* Add padding for spacing */
+            box-sizing: border-box; /* Include padding in width calculation */
+            display: flex; /* Enable flexbox on the info container */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center children horizontally */
+            justify-content: center; /* Center children vertically */
+        }
+
+        .content-container {
+            display: flex; /* Enable flexbox layout */
+            justify-content: space-between; /* Space between columns */
+            width: 50%; /* Full width of the container */
+            gap: 20px; /* Space between columns */
+        }
+
+        .column {
+            flex: 1; /* Allow columns to grow and shrink equally */
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+
+        .column.left {
+            min-width: 250px; /* Minimum width for left column */
+        }
+
+        .column.right {
+            min-width: 250px; /* Minimum width for right column */
+        }
+
+        @media (max-width: 768px) {
+            .column {
+                width: 100%; /* Full width on mobile */
+            }
+            .content-container {
+                flex-direction: column; /* Stack columns on mobile */
+                gap: 0px; /* Reduced gap on mobile */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="overlay">
+    <button class="close-button" onclick="closeOverlay();">&times;</button>
+
+    <div class="info-container"> <!-- Parent container for personal info -->
+        <!-- First Text Block: Personal Info and Contact -->
+        <div class="text-block">
+            <h1>ZOË DERKS</h1>
+            <p>freelance makeup artist based in Brussels <br> and Paris, also offering hair styling <br> services on demand.</p>
+            <p><strong>Let’s get in touch &lt;3</strong></p>
+            <p>Email<br> 
+                <a href="mailto:zoe.derks.zd@gmail.com?subject=I%27d%20like%20to%20get%20in%20touch%20with%20you%20%3C3">
+                    zoe.derks.zd@gmail.com
+                </a>
+            </p>
+            <p>Instagram<br>
+                <a href="https://www.instagram.com/zoe.derks" target="_blank">
+                    @zoe.derks
+                </a>
+            </p>
+        </div>
+
+        <div class="content-container">
+            <!-- Left Column: Selected Publications and Clients -->
+            <div class="column left text-block">
+                <h1>SELECTED PUBLICATIONS</h1>
+                <ul>
+                    <li>Enfnts Terribles</li>
+                    <li>Glamcult</li>
+                    <li>KALTBLUT Magazine</li>
+                    <li>MIRROR MIRROR Magazine</li>
+                    <li>ODDA Korea</li>
+                    <li>Pull Letter Magazine</li>
+                    <li>Schön! Switzerland</li>
+                    <li>Temple Magazine</li>
+                </ul>
+                <h1>SELECTED CLIENTS</h1>
+                <ul>
+                    <li>Armani Beauty</li>
+                    <li>Charles & Keith</li>
+                    <li>Isabel Marant</li>
+                    <li>Lore Van Keer</li>
+                    <li>Méson Brussels</li>
+                    <li>Milk of Lime</li>
+                    <li>Naomi Gilon</li>
+                    <li>Nike</li>
+                    <li>Paradox Brussels</li>
+                    <li>Simone Pérèle</li>
+                    <li>Zara</li>
+                </ul>
+            </div>
+
+            <!-- Right Column: Selected Fashion Shows and Music Videos -->
+            <div class="column right text-block">
+                <h1>SELECTED FASHION SHOWS</h1>
+                <ul>
+                    <li>Ann Demeulemeester, with Inge Grognard</li>
+                    <li>Ashi Studio, with Lynsey Alexander</li>
+                    <li>Balenciaga, with Inge Grognard</li>
+                    <li>Diesel, with Inge Grognard</li>
+                    <li>Isabel Marant, with Lisa Butler</li>
+                    <li>Issey Miyake, with Anthony Preel</li>
+                    <li>Louis Vuitton, with Ammy Drammeh</li>
+                    <li>Ludovic de Saint Sernin, with Karin Westerlund</li>
+                    <li>Marine Serre, with Janeen Witherspoon</li>
+                    <li>Saint Laurent, with Karin Westerlund</li>
+                    <li>Walter Van Beirendonck, with Jenneke Croubels</li>
+                    <li>Y/Project, with Inge Grognard</li>
+                </ul>
+
+                <h1>SELECTED MUSIC VIDEOS</h1>
+                <ul>
+                    <li>CRC - JM Weston</li>
+                    <li>CRC - Le sort des pétales</li>
+                    <li>Ichon - + C’est pas le moment</li>
+                    <li>More Eaze - a romance</li>
+                    <li>Tessa Dixson - Bad Thoughts</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function closeOverlay() {
+        document.querySelector('.overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
