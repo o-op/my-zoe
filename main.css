@@ -20,6 +20,7 @@
         }
     
         /* This is the navigation menu: nav, zoe-derks, nav-items, nav-item*/ 
+        
         nav {
         position: absolute;
         top: 3vw;
@@ -68,7 +69,7 @@
         top: 2vw; /* Slightly adjust top positioning */
         left: 3vw; /* Adjust left position */
         width: auto; /* Make width auto for mobile */
-        padding: 1vw; /* Add padding to keep it away from edges */
+        padding: 0vw; /* Add padding to keep it away from edges */
         display: flex;
         flex-direction: column; /* Stack the items vertically */
         align-items: flex-start; /* Align everything to the left */
@@ -78,8 +79,9 @@
     .zoe-derks {
         font-family: 'Lato', sans-serif;
         font-weight: 650;
-        font-size: 5vw; /* Smaller font size for logo */
+        font-size: 2.2vw; /* Smaller font size for logo */
         letter-spacing: 0px;
+        line-height: 2vw;
         color: #FF53CB;
         text-decoration: none;
         margin-bottom: 1.5vw; /* Space between logo and nav items */
@@ -97,12 +99,13 @@
     .nav-item {
         font-family: 'Lato', sans-serif;
         font-weight: 650;
-        font-size: 4vw; /* Smaller font size for menu items */
+        font-size: 2vw; /* Smaller font size for menu items */
         letter-spacing: 0.2px;
+        line-height: 2vw;
         color: #FF53CB;
         text-decoration: none;
-        padding: 0.5vw;
-        border: 2px solid transparent;
+        padding: 0.0vw; /* Adjusted to eliminate the indent in relation to zoe derks */
+        border: 0px solid transparent; /* Adjusted to eliminate the indent in relation to zoe derks, too! */
         transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
     }
 }
