@@ -118,7 +118,6 @@
     }
 
     .zoe-derks {
-        font-size: 7vw; /* Even smaller font size for the logo */
         margin-bottom: 2vw; /* Increase space below the logo */
     }
 
@@ -127,7 +126,6 @@
     }
 
     .nav-item {
-        font-size: 6vw; /* Even smaller font size for menu items */
     }
 }
 
