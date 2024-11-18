@@ -162,8 +162,8 @@
 @media (max-width: 768px) {
     /* Adjust dot size */
     .dot-container {
-        width: 5vw; /* Larger dot for better visibility on mobile */
-        height: 5vw; /* Maintain the circular shape */
+        width: 3vw; /* Larger dot for better visibility on mobile */
+        height: 3vw; /* Maintain the circular shape */
         bottom: 4vw; /* Adjust positioning for mobile */
         left: 3vw; /* Adjust left positioning for mobile */
     }
@@ -180,8 +180,8 @@
 @media (max-width: 480px) {
     /* Adjust dot size */
     .dot-container {
-        width: 8vw; /* Even larger dot for very small screens */
-        height: 8vw; /* Keep it proportional */
+        width: 3vw; /* Even larger dot for very small screens */
+        height: 3vw; /* Keep it proportional */
         bottom: 5vw; /* Adjust bottom spacing */
     }
 
