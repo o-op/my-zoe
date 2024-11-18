@@ -62,32 +62,36 @@
 
 /* Responsive Navigation Menu (Mobile Only) */
 @media (max-width: 768px) {
-    /* Stack items vertically for mobile */
+    /* Ensure the navigation block (with Zoe Derks and menu items) is positioned correctly */
     nav {
-        position: absolute; /* Keep it absolute positioning */
+        position: absolute;
         top: 2vw; /* Slightly adjust top positioning */
         left: 3vw; /* Adjust left position */
         width: auto; /* Make width auto for mobile */
         padding: 1vw; /* Add padding to keep it away from edges */
+        display: flex;
+        flex-direction: column; /* Stack the items vertically */
+        align-items: flex-start; /* Align everything to the left */
     }
 
-    /* Stack nav items vertically and align left */
+    /* Adjust logo size and space between elements */
+    .zoe-derks {
+        font-family: 'Lato', sans-serif;
+        font-weight: 650;
+        font-size: 5vw; /* Smaller font size for logo */
+        letter-spacing: 0px;
+        color: #FF53CB;
+        text-decoration: none;
+        margin-bottom: 1.5vw; /* Space between logo and nav items */
+    }
+
+    /* Make sure the nav items stack and are aligned to the left */
     .nav-items {
         display: flex;
         flex-direction: column; /* Stack vertically */
         align-items: flex-start; /* Align to the left */
         gap: 1.5vw; /* Increase space between items */
-    }
-
-    /* Adjust logo size for mobile */
-    .zoe-derks {
-        font-family: 'Lato', sans-serif;
-        font-weight: 650;
-        font-size: 5vw; /* Smaller font size for the logo */
-        letter-spacing: 0px;
-        color: #FF53CB;
-        text-decoration: none;
-        margin-bottom: 1vw; /* Space between logo and nav items */
+        width: auto; /* Ensure the width is not stretched */
     }
 
     .nav-item {
@@ -103,8 +107,8 @@
     }
 }
 
+/* Further Adjustments for Very Small Screens (max-width: 480px) */
 @media (max-width: 480px) {
-    /* Further adjustments for very small screens */
     nav {
         top: 1vw; /* Further adjust positioning */
         left: 2vw; /* Further adjust left position */
@@ -123,6 +127,7 @@
         font-size: 6vw; /* Even smaller font size for menu items */
     }
 }
+
 
 
         /* Dot container */
