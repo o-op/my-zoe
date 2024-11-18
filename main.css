@@ -129,7 +129,7 @@
     }
 }
 
-
+/* The two next properties are for the bottom dot and text make up artist */
 
         /* Dot container */
         .dot-container {
@@ -157,6 +157,42 @@
     z-index: 2000; /* Higher z-index for visibility */
     display: block; /* Initially hidden */
 }
+
+/* Mobile adjustments for the dot and text (for smaller screens) */
+@media (max-width: 768px) {
+    /* Adjust dot size */
+    .dot-container {
+        width: 5vw; /* Larger dot for better visibility on mobile */
+        height: 5vw; /* Maintain the circular shape */
+        bottom: 4vw; /* Adjust positioning for mobile */
+        left: 3vw; /* Adjust left positioning for mobile */
+    }
+
+    /* Adjust text box size and positioning */
+    .text-box {
+        font-size: 3vw; /* Increase font size for better readability on small screens */
+        left: calc(3vw + 6.5vw); /* Adjust position relative to dot */
+        bottom: 4vw; /* Adjust spacing from the bottom */
+    }
+}
+
+/* Further adjustments for very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Adjust dot size */
+    .dot-container {
+        width: 8vw; /* Even larger dot for very small screens */
+        height: 8vw; /* Keep it proportional */
+        bottom: 5vw; /* Adjust bottom spacing */
+    }
+
+    /* Adjust text box size and position */
+    .text-box {
+        font-size: 5vw; /* Larger font size for very small screens */
+        bottom: 6vw; /* Increase bottom spacing */
+    }
+}
+
+
 
 
 
