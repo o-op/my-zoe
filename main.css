@@ -113,8 +113,8 @@
 /* Further Adjustments for Very Small Screens (max-width: 480px) */
 @media (max-width: 480px) {
     nav {
-        top: 1vw; /* Further adjust positioning */
-        left: 2vw; /* Further adjust left position */
+        top: 5vw; /* Further adjust positioning */
+        left: 5vw; /* Further adjust left position */
     }
 
     .zoe-derks {
@@ -153,7 +153,6 @@
     font-size: 1.1vw; /* Same font size as nav items */
     letter-spacing: 0.2px; /* Adjust spacing between letters */
     padding: 0.5vw; /* Add padding for better appearance */
-    border-radius: 5px; /* Optional: rounded corners */
     z-index: 2000; /* Higher z-index for visibility */
     display: block; /* Initially hidden */
 }
@@ -165,15 +164,15 @@
         width: 1.25rem; /* Larger dot for better visibility on mobile */
         height: 1.25rem; /* Maintain the circular shape */
         bottom: 5vw; /* Adjust positioning for mobile */
-        left: 3vw; /* Adjust left positioning for mobile */
+        left: 5vw; /* Adjust left positioning for mobile */
     }
 
     /* Adjust text box size and positioning */
     .text-box {
         font-size: 1rem; /* Increase font size for better readability on small screens */
-        left: calc(7vw); /* Adjust position relative to dot */
+        left: calc(12vw); /* Adjust position relative to dot */
         bottom: 5vw; /* Adjust spacing from the bottom */
-        transform: translateY(5%); /* Ensure text is centered relative to dot */
+        transform: translateY(0%); /* Ensure text is centered relative to dot */
     }
 }
 
