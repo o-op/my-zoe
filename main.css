@@ -60,40 +60,53 @@
         transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
     }
 
-    @media (max-width: 768px) {
-        nav {
-            top: 5vw;
-            left: 3vw;
-            width: calc(100% - 6vw); /* Reduce width for better fit */
-        }
-    
-        .zoe-derks {
-            font-size: 5vw; /* Increase flexibility of the logo size */
-        }
-    
-        .nav-items {
-            gap: 4vw; /* Decrease gap for smaller screens */
-            grid-template-columns: 1fr; /* Stack navigation items vertically */
-        }
-    
-        .nav-item {
-            font-size: 4vw; /* Adjust font size for better visibility */
-        }
+    /* Responsive Navigation Menu (Mobile Only) */
+@media (max-width: 768px) {
+    /* Stack items vertically for mobile */
+    nav {
+        top: 2vw; /* Slightly adjust top positioning */
+        left: 3vw; /* Adjust left position */
+        width: auto; /* Make width auto for mobile */
+        padding: 1vw; /* Add padding to keep it away from edges */
     }
-    
-    @media (max-width: 480px) {
-        .nav-items {
-            gap: 3vw;
-        }
-    
-        .zoe-derks {
-            font-size: 7vw;
-        }
-    
-        .nav-item {
-            font-size: 5vw; /* Further reduce size for smaller devices */
-        }
+
+    /* Stack nav items vertically */
+    .nav-items {
+        display: flex;
+        flex-direction: column; /* Stack vertically */
+        align-items: flex-start; /* Align to left */
+        gap: 1.5vw; /* Increase space between items */
     }
+
+    /* Reduce font size for mobile */
+    .zoe-derks {
+        font-size: 5vw; /* Smaller font size for logo */
+    }
+
+    .nav-item {
+        font-size: 4vw; /* Smaller font size for menu items */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust further for very small screens */
+    nav {
+        top: 1vw; /* Further adjust positioning */
+        left: 2vw; /* Further adjust left position */
+    }
+
+    .zoe-derks {
+        font-size: 7vw; /* Even smaller font size for logo */
+    }
+
+    .nav-items {
+        gap: 2vw; /* Increase gap for better spacing */
+    }
+
+    .nav-item {
+        font-size: 6vw; /* Even smaller font size for menu items */
+    }
+}
 
         /* Dot container */
         .dot-container {
