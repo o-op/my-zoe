@@ -183,13 +183,13 @@
     .dot-container {
         width: 1.25rem; /* Even larger dot for very small screens */
         height: 1.25rem; /* Keep it proportional */
-        bottom: 5rem; /* Adjust bottom spacing */
+        bottom: 1.3rem; /* Adjust bottom spacing */
     }
 
     /* Adjust text box size and position */
     .text-box {
         font-size: 1rem; /* Larger font size for very small screens */
-        bottom: 5rem; /* Increase bottom spacing */
+        bottom: 1.3rem; /* Increase bottom spacing */
     }
 }
 
