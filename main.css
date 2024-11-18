@@ -1,0 +1,148 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            background-image: url('assets/media/background.webp');
+            background-size: cover;
+            cursor: url('assets/cursors/arrow.png'), auto;
+        }
+
+        .image {
+            position: absolute;
+            opacity: 1;
+            pointer-events: none;
+            transition: opacity 0.5s;
+            will-change: opacity;
+        }
+    
+        /* This is the navigation menu: nav, zoe-derks, nav-items, nav-item*/ 
+        nav {
+        position: absolute;
+        top: 3vw;
+        left: 5vw;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        width: calc(100% - 10vw);
+        z-index: 1001;
+    }
+
+    .zoe-derks {
+        font-family: 'Lato', sans-serif;
+        font-weight: 650;
+        font-size: 2.2vw;
+        letter-spacing: 0px;
+        color: #FF53CB;
+        text-decoration: none;
+        margin-right: 0.1vw;
+    }
+
+    .nav-items {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 9.2vw;
+        justify-items: center;
+    }
+
+    .nav-item {
+        font-family: 'Lato', sans-serif;
+        font-weight: 650;
+        font-size: 1.1vw;
+        letter-spacing: 0.2px;
+        color: #FF53CB;
+        text-decoration: none;
+        padding: 0.5vw;
+        border: 2px solid transparent;
+        transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            top: 5vw;
+            left: 3vw;
+            width: calc(100% - 6vw); /* Reduce width for better fit */
+        }
+    
+        .zoe-derks {
+            font-size: 5vw; /* Increase flexibility of the logo size */
+        }
+    
+        .nav-items {
+            gap: 4vw; /* Decrease gap for smaller screens */
+            grid-template-columns: 1fr; /* Stack navigation items vertically */
+        }
+    
+        .nav-item {
+            font-size: 4vw; /* Adjust font size for better visibility */
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .nav-items {
+            gap: 3vw;
+        }
+    
+        .zoe-derks {
+            font-size: 7vw;
+        }
+    
+        .nav-item {
+            font-size: 5vw; /* Further reduce size for smaller devices */
+        }
+    }
+
+        /* Dot container */
+        .dot-container {
+            position: absolute;
+            bottom: 3vw;
+            left: 5vw;
+            width: 2.2vw; /* Match the approximate size of "O" in ZOË DERKS */
+            height: 2.2vw; /* Circular shape */
+            background-color: #FF53CB; /* Same color as ZOË DERKS text */
+            border-radius: 50%; /* Make it a circle */
+   	 z-index: 2000; /* Higher z-index to ensure visibility */
+        }
+
+.text-box {
+    position: absolute;
+    bottom: 3vw; /* Align with the dot */
+    left: calc(5vw + 2.5vw); /* Position it to the right of the dot */
+    color: #FF53CB; /* Same color as the dot and ZOË DERKS text */
+    font-family: 'Lato', sans-serif; /* Same font family */
+    font-weight: 650; /* Same font weight */
+    font-size: 1.1vw; /* Same font size as nav items */
+    letter-spacing: 0.2px; /* Adjust spacing between letters */
+    padding: 0.5vw; /* Add padding for better appearance */
+    border-radius: 5px; /* Optional: rounded corners */
+    z-index: 2000; /* Higher z-index for visibility */
+    display: block; /* Initially hidden */
+}
+
+
+
+
+        input, textarea, select {
+            cursor: url('assets/cursors/text.png'), auto;
+        }
+        a, button {
+            cursor: url('assets/cursors/pointer.png'), pointer;
+        }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: absolute; /* Position relative to the viewport */
+            background-color: none; /* No background */
+            color: #FF53CB; /* Text color */
+            font-family: 'Lato', sans-serif; /* Changed to Lato */
+            font-size: 1vw; /* Font size */
+            padding: 5px; /* Padding for the tooltip */
+            border-radius: 5px; /* Rounded corners */
+            pointer-events: none; /* Prevent tooltip from blocking mouse events */
+            white-space: nowrap; /* Prevent text from wrapping */
+            display: none; /* Hidden by default */
+            z-index: 2000; /* Increased z-index to ensure visibility */
+        }

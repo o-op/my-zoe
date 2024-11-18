@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editorial</title>
 
+    <!-- Link to the external main.css file -->
+    <link rel="stylesheet" href="main.css">
+
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,88 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            position: relative;
-            height: 100vh;
-            background-color: #f0f0f0; /* Optional: Background color for the subpage */
-            cursor: url('cursors/arrow.png'), auto; /* Custom arrow cursor */
-        }
-
-        /* Dot container */
-        .dot-container {
-            position: absolute;
-            bottom: 3vw;
-            left: 5vw;
-            width: 2.2vw; /* Match the approximate size of "O" in ZOË DERKS */
-            height: 2.2vw; /* Circular shape */
-            background-color: #FF53CB; /* Same color as ZOË DERKS text */
-            border-radius: 50%; /* Make it a circle */
-   	 z-index: 1900; /* Higher z-index to ensure visibility */
-        }
-
-.text-box {
-    position: absolute;
-    bottom: 3vw; /* Align with the dot */
-    left: calc(5vw + 2.5vw); /* Position it to the right of the dot */
-    color: #FF53CB; /* Same color as the dot and ZOË DERKS text */
-    font-family: 'Lato', sans-serif; /* Same font family */
-    font-weight: 650; /* Same font weight */
-    font-size: 1.1vw; /* Same font size as nav items */
-    letter-spacing: 0.1px; /* Adjust spacing between letters */
-    padding: 0.5vw; /* Add padding for better appearance */
-    border-radius: 5px; /* Optional: rounded corners */
-    z-index: 2000; /* Higher z-index for visibility */
-    display: block; /* Initially hidden */
-}
-
-        nav {
-            position: absolute;
-            top: 3vw;
-            left: 5vw;
-            display: grid;
-            grid-template-columns: 1fr auto; /* Keeps "ZOË DERKS" on the left and nav-items on the right */
-            align-items: center;
-            width: calc(100% - 10vw); /* Total width minus the left and right padding */
-            z-index: 1001;
-        }
-
-        .zoe-derks {
-            font-family: 'Lato', sans-serif; /* Changed to Lato */
-            font-weight: 650; /* Extra bold weight */
-            font-size: 2.2vw; /* Size for the name */
-            letter-spacing: 0px; /* Adjust spacing between letters */
-            color: #FF53CB; /* Default color */
-            text-decoration: none; /* Remove underline */
-            margin-right: 0.1vw; /* Space between ZOË DERKS and other items */
-        }
-
-        .nav-items {
-            display: grid;
-            grid-template-columns: repeat(3, auto); /* Ensures three equal columns for each item */
-            gap: 9.2vw; /* Space between items */
-            justify-items: center; /* Center items in their respective grid cells */
-        }
-
-        .nav-item {
-            font-family: 'Lato', sans-serif; /* Ensure this is Lato */
-            font-weight: 650; /* Extra bold weight */
-            font-size: 1.1vw; /* Keep this for responsiveness */
-            letter-spacing: 0.2px; /* Adjust spacing between letters */
-            color: #FF53CB; /* Default color */
-            text-decoration: none; /* Remove underline */
-            padding: 0.5vw; /* Add padding for box effect */
-            border: 2px solid transparent; /* Optional: Add border for box effect */
-        }
-
-
-        input, textarea, select {
-            cursor: url('cursors/text.png'), auto;
-        }
-        a, button {
-            cursor: url('cursors/pointer.png'), pointer;
-        }
 
 /* Image gallery styles */
 .image-gallery {
@@ -156,26 +77,26 @@
 
 <!-- Image Gallery Section -->
 <div class="image-gallery" id="gallery">
-<img src="Editorial_001.webp" alt="Editorial Image 1" data-hover-text="Make up and hair">
-<img src="Editorial_002.webp" alt="Editorial Image 2" data-hover-text="Make up and hair">
-<img src="Editorial_003.webp" alt="Editorial Image 3" data-hover-text="Make up and hair">
-<img src="Editorial_004.webp" alt="Editorial Image 4" data-hover-text="Make up and hair">
-<img src="Editorial_005.webp" alt="Editorial Image 5" data-hover-text="Make up and hair">
-<img src="Editorial_006.webp" alt="Editorial Image 6" data-hover-text="Make up and hair">
-<img src="Editorial_007.webp" alt="Editorial Image 7" data-hover-text="Make up and hair">
-<img src="Editorial_008.webp" alt="Editorial Image 8" data-hover-text="Make up and hair">
-<img src="Editorial_009.webp" alt="Editorial Image 9" data-hover-text="Make up and hair">
-<img src="Editorial_010.webp" alt="Editorial Image 10" data-hover-text="Make up and hair">
-<img src="Editorial_011.webp" alt="Editorial Image 11" data-hover-text="Make up and hair">
-<img src="Editorial_012.webp" alt="Editorial Image 12" data-hover-text="Make up and hair">
-<img src="Editorial_013.webp" alt="Editorial Image 13" data-hover-text="Make up and hair">
-<img src="Editorial_014.webp" alt="Editorial Image 14" data-hover-text="Make up and hair">
-<img src="Editorial_015.webp" alt="Editorial Image 15" data-hover-text="Make up and hair">
-<img src="Editorial_016.webp" alt="Editorial Image 16" data-hover-text="Make up and hair">
-<img src="Editorial_017.webp" alt="Editorial Image 17" data-hover-text="Make up and hair">
-<img src="Editorial_018.webp" alt="Editorial Image 18" data-hover-text="Make up and hair">
-<img src="Editorial_019.webp" alt="Editorial Image 19" data-hover-text="Make up and hair">
-<img src="Editorial_020.webp" alt="Editorial Image 20" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_001.webp" alt="Editorial Image 1" data-hover-text="Make up">
+<img src="assets/media/Editorial_002.webp" alt="Editorial Image 2" data-hover-text="Make up">
+<img src="assets/media/Editorial_003.webp" alt="Editorial Image 3" data-hover-text="Make up">
+<img src="assets/media/Editorial_004.webp" alt="Editorial Image 4" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_005.webp" alt="Editorial Image 5" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_006.webp" alt="Editorial Image 6" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_007.webp" alt="Editorial Image 7" data-hover-text="Make up">
+<img src="assets/media/Editorial_008.webp" alt="Editorial Image 8" data-hover-text="Make up">
+<img src="assets/media/Editorial_009.webp" alt="Editorial Image 9" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_010.webp" alt="Editorial Image 10" data-hover-text="Make up">
+<img src="assets/media/Editorial_011.webp" alt="Editorial Image 11" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_012.webp" alt="Editorial Image 12" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_013.webp" alt="Editorial Image 13" data-hover-text="Make up">
+<img src="assets/media/Editorial_014.webp" alt="Editorial Image 14" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_015.webp" alt="Editorial Image 15" data-hover-text="Make up">
+<img src="assets/media/Editorial_016.webp" alt="Editorial Image 16" data-hover-text="Make up">
+<img src="assets/media/Editorial_017.webp" alt="Editorial Image 17" data-hover-text="Make up">
+<img src="assets/media/Editorial_018.webp" alt="Editorial Image 18" data-hover-text="Make up">
+<img src="assets/media/Editorial_019.webp" alt="Editorial Image 19" data-hover-text="Make up and hair">
+<img src="assets/media/Editorial_020.webp" alt="Editorial Image 20" data-hover-text="Make up and hair">
 </div>
 
 <!-- Modal for Enlarged Images -->
@@ -215,7 +136,6 @@ function closeModal() {
     modal.style.display = 'none'; // Hide the modal
 }
 </script>
-
 
 </body>
 </html>

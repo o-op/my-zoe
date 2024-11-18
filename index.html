@@ -5,119 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursor Movement Image Display</title>
 
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Google Fonts stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Link to the external main.css file -->
+    <link rel="stylesheet" href="main.css">
     
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            position: relative;
-            height: 100vh;
-            background-image: url('background.webp'); /* Ensure this is correct */
-            background-size: cover;
-            cursor: url('cursors/arrow.png'), auto; /* Custom arrow cursor */
-        }
-
-        /* Dot container */
-        .dot-container {
-            position: absolute;
-            bottom: 3vw;
-            left: 5vw;
-            width: 2.2vw; /* Match the approximate size of "O" in ZOË DERKS */
-            height: 2.2vw; /* Circular shape */
-            background-color: #FF53CB; /* Same color as ZOË DERKS text */
-            border-radius: 50%; /* Make it a circle */
-   	 z-index: 2000; /* Higher z-index to ensure visibility */
-        }
-
-.text-box {
-    position: absolute;
-    bottom: 3vw; /* Align with the dot */
-    left: calc(5vw + 2.5vw); /* Position it to the right of the dot */
-    color: #FF53CB; /* Same color as the dot and ZOË DERKS text */
-    font-family: 'Lato', sans-serif; /* Same font family */
-    font-weight: 650; /* Same font weight */
-    font-size: 1.1vw; /* Same font size as nav items */
-    letter-spacing: 0.2px; /* Adjust spacing between letters */
-    padding: 0.5vw; /* Add padding for better appearance */
-    border-radius: 5px; /* Optional: rounded corners */
-    z-index: 2000; /* Higher z-index for visibility */
-    display: block; /* Initially hidden */
-}
-
-
-        .image {
-            position: absolute;
-            opacity: 1;
-            pointer-events: none;
-            transition: opacity 0.5s;
-            will-change: opacity;
-        }
-        nav {
-            position: absolute;
-            top: 3vw;
-            left: 5vw;
-            display: grid;
-            grid-template-columns: 1fr auto; /* Keeps "ZOË DERKS" on the left and nav-items on the right */
-            align-items: center;
-            width: calc(100% - 10vw); /* Total width minus the left and right padding */
-            z-index: 1001;
-        }
-
-        .zoe-derks {
-            font-family: 'Lato', sans-serif; /* Changed to Lato */
-            font-weight: 650; /* Extra bold weight */
-            font-size: 2.2vw; /* Size for the name */
-            letter-spacing: 0px; /* Adjust spacing between letters */
-            color: #FF53CB; /* Default color */
-            text-decoration: none; /* Remove underline */
-            margin-right: 0.1vw; /* Space between ZOË DERKS and other items */
-        }
-        .nav-items {
-            display: grid;
-            grid-template-columns: repeat(3, auto); /* Ensures three equal columns for each item */
-            gap: 9.2vw; /* Space between items */
-            justify-items: center; /* Center items in their respective grid cells */
-        }
-        .nav-item {
-            font-family: 'Lato', sans-serif; /* Ensure this is Lato */
-            font-weight: 650; /* Extra bold weight */
-            font-size: 1.1vw; /* Keep this for responsiveness; you can update later */
-            letter-spacing: 0.2px; /* Adjust spacing between letters */
-            color: #FF53CB; /* Default color */
-            text-decoration: none; /* Remove underline */
-            padding: 0.5vw; /* Add padding for box effect */
-            border: 2px solid transparent; /* Optional: Add border for box effect */
-            transition: color 0.3s, text-shadow 0.3s, border-color 0.3s; /* Smooth transition for hover effect */
-        }
-
-        input, textarea, select {
-            cursor: url('cursors/text.png'), auto;
-        }
-        a, button {
-            cursor: url('cursors/pointer.png'), pointer;
-        }
-
-        /* Tooltip styles */
-        .tooltip {
-            position: absolute; /* Position relative to the viewport */
-            background-color: none; /* No background */
-            color: #FF53CB; /* Text color */
-            font-family: 'Lato', sans-serif; /* Changed to Lato */
-            font-size: 1vw; /* Font size */
-            padding: 5px; /* Padding for the tooltip */
-            border-radius: 5px; /* Rounded corners */
-            pointer-events: none; /* Prevent tooltip from blocking mouse events */
-            white-space: nowrap; /* Prevent text from wrapping */
-            display: none; /* Hidden by default */
-            z-index: 2000; /* Increased z-index to ensure visibility */
-        }
-    </style>
 </head>
 <body>
 
@@ -139,21 +29,21 @@
 
 <script>
     const images = [
-        'Editorial_002.webp',
-        'Editorial_005.webp',
-        'Commissioned_011.webp',
-        'Editorial_003.webp',
-        'Commissioned_002.webp',
-        'Editorial_011.webp',
-        'Commissioned_023.webp',
-        'Editorial_015.webp',
-        'Commissioned_003.webp',
-        'Editorial_014.webp',
-        'Commissioned_018.webp',
-        'Commissioned_019.webp',
-        'Commissioned_001.webp',
-        'Editorial_009.webp',
-        'Editorial_001.webp'
+        'assets/media/Editorial_002.webp',
+        'assets/media/Editorial_005.webp',
+        'assets/media/Commissioned_011.webp',
+        'assets/media/Editorial_003.webp',
+        'assets/media/Commissioned_002.webp',
+        'assets/media/Editorial_011.webp',
+        'assets/media/Commissioned_023.webp',
+        'assets/media/Editorial_015.webp',
+        'assets/media/Commissioned_003.webp',
+        'assets/media/Editorial_014.webp',
+        'assets/media/Commissioned_018.webp',
+        'assets/media/Commissioned_019.webp',
+        'assets/media/Commissioned_001.webp',
+        'assets/media/Editorial_009.webp',
+        'assets/media/Editorial_001.webp'
     ];
 
     // Preload images with lazy loading enabled
