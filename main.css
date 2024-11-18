@@ -60,53 +60,70 @@
         transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
     }
 
-    /* Responsive Navigation Menu (Mobile Only) */
+/* Responsive Navigation Menu (Mobile Only) */
 @media (max-width: 768px) {
     /* Stack items vertically for mobile */
     nav {
+        position: absolute; /* Keep it absolute positioning */
         top: 2vw; /* Slightly adjust top positioning */
         left: 3vw; /* Adjust left position */
         width: auto; /* Make width auto for mobile */
         padding: 1vw; /* Add padding to keep it away from edges */
     }
 
-    /* Stack nav items vertically */
+    /* Stack nav items vertically and align left */
     .nav-items {
         display: flex;
         flex-direction: column; /* Stack vertically */
-        align-items: flex-start; /* Align to left */
+        align-items: flex-start; /* Align to the left */
         gap: 1.5vw; /* Increase space between items */
     }
 
-    /* Reduce font size for mobile */
+    /* Adjust logo size for mobile */
     .zoe-derks {
-        font-size: 5vw; /* Smaller font size for logo */
+        font-family: 'Lato', sans-serif;
+        font-weight: 650;
+        font-size: 5vw; /* Smaller font size for the logo */
+        letter-spacing: 0px;
+        color: #FF53CB;
+        text-decoration: none;
+        margin-bottom: 1vw; /* Space between logo and nav items */
     }
 
     .nav-item {
+        font-family: 'Lato', sans-serif;
+        font-weight: 650;
         font-size: 4vw; /* Smaller font size for menu items */
+        letter-spacing: 0.2px;
+        color: #FF53CB;
+        text-decoration: none;
+        padding: 0.5vw;
+        border: 2px solid transparent;
+        transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
     }
 }
 
 @media (max-width: 480px) {
-    /* Adjust further for very small screens */
+    /* Further adjustments for very small screens */
     nav {
         top: 1vw; /* Further adjust positioning */
         left: 2vw; /* Further adjust left position */
     }
 
     .zoe-derks {
-        font-size: 7vw; /* Even smaller font size for logo */
+        font-size: 7vw; /* Even smaller font size for the logo */
+        margin-bottom: 2vw; /* Increase space below the logo */
     }
 
     .nav-items {
-        gap: 2vw; /* Increase gap for better spacing */
+        gap: 2vw; /* Increase gap between nav items for better spacing */
     }
 
     .nav-item {
         font-size: 6vw; /* Even smaller font size for menu items */
     }
 }
+
 
         /* Dot container */
         .dot-container {
