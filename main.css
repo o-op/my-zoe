@@ -79,7 +79,7 @@
     .zoe-derks {
         font-family: 'Lato', sans-serif;
         font-weight: 650;
-        font-size: 1vw; /* Smaller font size for logo */
+        font-size: 0.1vw; /* Smaller font size for logo */
         /* line-height: 1.2; */  /* outcommented because it creates a conflict but may be neccessary */ 
         letter-spacing: 0px;
         color: #FF53CB;
@@ -99,7 +99,7 @@
     .nav-item {
         font-family: 'Lato', sans-serif;
         font-weight: 650;
-        font-size: 1vw; /* Smaller font size for menu items */
+        font-size: 0.1vw; /* Smaller font size for menu items */
         letter-spacing: 0.2px;
         /* line-height: 1.2; */  /* outcommented because it creates a conflict but may be neccessary */  
         color: #FF53CB;
