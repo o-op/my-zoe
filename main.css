@@ -176,21 +176,6 @@
     }
 }
 
-/* Further adjustments for very small screens (max-width: 480px) */
-@media (max-width: 480px) {
-    /* Adjust dot size */
-    .dot-container {
-        width: 3vw; /* Even larger dot for very small screens */
-        height: 3vw; /* Keep it proportional */
-        bottom: 5vw; /* Adjust bottom spacing */
-    }
-
-    /* Adjust text box size and position */
-    .text-box {
-        font-size: 1rem; /* Larger font size for very small screens */
-        bottom: 5vw; /* Increase bottom spacing */
-    }
-}
 
 
 
