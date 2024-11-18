@@ -80,6 +80,7 @@
         font-family: 'Lato', sans-serif;
         font-weight: 650;
         font-size: 2.2vw; /* Smaller font size for logo */
+        /* line-height: 1.2; */  /* outcommented because it creates a conflict but may be neccessary */ 
         letter-spacing: 0px;
         color: #FF53CB;
         text-decoration: none;
@@ -91,7 +92,7 @@
         display: flex;
         flex-direction: column; /* Stack vertically */
         align-items: flex-start; /* Align to the left */
-        gap: 1.5vw; /* Increase space between items */
+        gap: 1vw; /* Increase space between items */
         width: auto; /* Ensure the width is not stretched */
     }
 
@@ -100,6 +101,7 @@
         font-weight: 650;
         font-size: 2vw; /* Smaller font size for menu items */
         letter-spacing: 0.2px;
+        /* line-height: 1.2; */  /* outcommented because it creates a conflict but may be neccessary */  
         color: #FF53CB;
         text-decoration: none;
         padding: 0.0vw; /* Adjusted to eliminate the indent in relation to zoe derks */
