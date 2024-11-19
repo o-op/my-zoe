@@ -82,6 +82,7 @@
 });
 
 document.addEventListener('touchmove', (event) => {
+    event.preventDefault();  // Prevent default scroll behavior
     const touch = event.touches[0]; // Get the first touch point
     handleCursorMove(touch.clientX, touch.clientY, 0, 0); // No movementX/Y for touch
 });
@@ -111,6 +112,7 @@ function handleCursorMove(clientX, clientY, movementX, movementY) {
         });
     }
 }
+
 
 
     // Show tooltip on page load
