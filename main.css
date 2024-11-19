@@ -84,7 +84,7 @@
         letter-spacing: 0px;
         color: #FF53CB;
         text-decoration: none;
-        margin-bottom: 1.5vw; /* Space between logo and nav items */
+        margin-bottom: 0.8vw; /* Space between logo and nav items */
     }
 
     /* Make sure the nav items stack and are aligned to the left */
@@ -146,13 +146,14 @@
 .text-box {
     position: absolute;
     bottom: 3vw; /* Align with the dot */
-    left: calc(5vw + 2.5vw); /* Position it to the right of the dot */
+    left: calc(5vw + 2.7vw); /* Position it to the right of the dot */
     color: #FF53CB; /* Same color as the dot and ZOË DERKS text */
     font-family: 'Lato', sans-serif; /* Same font family */
     font-weight: 650; /* Same font weight */
-    font-size: 1.1vw; /* Same font size as nav items */
+    font-size: 1.2vw; /* Same font size as nav items */
     letter-spacing: 0.2px; /* Adjust spacing between letters */
-    padding: 0.5vw; /* Add padding for better appearance */
+    padding: 0.4vw; /* Add padding for better appearance */
+    left: calc(5vw + 2.7vw); /* Gap = 2.7vw */
     z-index: 2000; /* Higher z-index for visibility */
     display: block; /* Initially hidden */
 }
@@ -161,42 +162,45 @@
 @media (max-width: 768px) {
     /* Adjust dot size */
     .dot-container {
-        width: 4rem; /* Larger dot for better visibility on mobile */
-        height: 1.25rem; /* Maintain the circular shape */
+        width: 1.6rem; /* Larger dot for better visibility on mobile */
+        height: 1.6rem; /* Maintain the circular shape */
         bottom: 5vw; /* Adjust positioning for mobile */
         left: 5vw; /* Adjust left positioning for mobile */
     }
 
     /* Adjust text box size and positioning */
     .text-box {
-        font-size: 4rem; /* Increase font size for better readability on small screens */
-        left: calc(12vw); /* Adjust position relative to dot */
+        font-size: 1.089rem; /* Increase font size for better readability on small screens */
+        left: calc(9vw); /* Adjust position relative to dot */
         bottom: 5vw; /* Adjust spacing from the bottom */
+        padding: 0.3rem;
+        left: calc(5vw + 2rem); /* Adjust gap */
         transform: translateY(0%); /* Ensure text is centered relative to dot */
     }
 }
 
 @media (max-width: 600px) { /* Targeting devices like iPhone 13 mini */
     .dot-container {
-        bottom: 4rem; /* Adjust for smaller screens to keep dot within the viewport */
-        left: 4vw;
-        width: 1.8rem;
-        height: 1.8rem;
+        bottom: 5vw; /* Adjust for smaller screens to keep dot within the viewport */
+        left: 5vw;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 
     .text-box {
-        bottom: 4rem; /* Match the bottom positioning of the dot */
+        bottom: 5vw; /* Match the bottom positioning of the dot */
         font-size: 1rem; /* Adjust text size for better visibility */
+        padding: 0.3rem;
+        left: calc(5vw + 2rem); /* Adjust gap */
     }
 }
-
 
 /* Further adjustments for very small screens (max-width: 480px) */
 @media (max-width: 480px) {
     /* Adjust dot size */
     .dot-container {
-        width: 1.25rem; /* Even larger dot for very small screens */
-        height: 1.25rem; /* Keep it proportional */
+        width: 1.15rem; /* Even larger dot for very small screens */
+        height: 1.15rem; /* Keep it proportional */
         bottom: 5vw; /* Adjust bottom spacing */
     }
 
@@ -204,6 +208,9 @@
     .text-box {
         font-size: 1rem; /* Larger font size for very small screens */
         bottom: 5vw; /* Increase bottom spacing */
+        padding: 0.2rem;
+        left: calc(5vw + 1.6rem); /* Adjust gap */
+        transform: translateY(8%); /* Ensure text is centered relative to dot */
     }
 }
 
