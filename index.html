@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Cursor Movement Image Display</title>
 
     <!-- Link to the external main.css file -->
@@ -52,6 +53,7 @@
             const img = new Image();
             img.src = src; 
             img.loading = 'lazy'; // Enables lazy loading
+            console.log(`Preloaded: ${src}`); // Debugging log
             return img;
         });
     };
@@ -78,41 +80,69 @@
     let isThrottled = false;
 
     document.addEventListener('mousemove', (event) => {
+        console.log('Mouse moved');
         if (!isThrottled) {
             isThrottled = true;
 
             requestAnimationFrame(() => {
-                if (cursorMoved >= cursorMovementThreshold) {
-                    imageElement.src = loadedImages[currentImageIndex].src;
-                    const imgWidth = imageElement.offsetWidth;
-                    const imgHeight = imageElement.offsetHeight;
-
-                    imageElement.style.left = (event.clientX - imgWidth / 2) + 'px'; // Position the image
-                    imageElement.style.top = (event.clientY - imgHeight / 2) + 'px'; // Position the image
-                    
-                    cursorMoved = 0;
-                    currentImageIndex = (currentImageIndex + 1) % loadedImages.length; // Cycle through images
-                }
-                cursorMoved += Math.abs(event.movementX) / window.innerWidth + Math.abs(event.movementY) / window.innerHeight;
+                handleCursorMove(event.clientX, event.clientY, event.movementX, event.movementY);
                 isThrottled = false;
-
-                // Update tooltip position
-                tooltipElement.style.left = (event.clientX + 30) + 'px'; // 30 pixels right of cursor
-                tooltipElement.style.top = (event.clientY + 30) + 'px'; // 30 pixels below cursor
             });
         }
     });
 
-    // Show tooltip on page load
-   // const showTooltip = () => {
-     //   tooltipElement.style.display = 'block';
-     //   setTimeout(() => {
-      //      tooltipElement.style.display = 'none'; // Hide after 5 seconds
-      //  }, 5000);
-   // };
+    // Variables to store the last touch position
+    let lastTouchX = 0;
+    let lastTouchY = 0;
 
-    // Call the function to show the tooltip
-  //  showTooltip();
+    // Touchmove event
+    document.addEventListener(
+        'touchmove',
+        console.log('Touch moved');
+        (event) => {
+            event.preventDefault(); // Prevent default scroll behavior
+
+            const touch = event.touches[0]; // Get the first touch point
+            const movementX = touch.clientX - lastTouchX;
+            const movementY = touch.clientY - lastTouchY;
+
+            lastTouchX = touch.clientX; // Update last touch position
+            lastTouchY = touch.clientY;
+
+            if (!isThrottled) {
+                isThrottled = true;
+
+                requestAnimationFrame(() => {
+                    handleCursorMove(touch.clientX, touch.clientY, movementX, movementY);
+                    isThrottled = false;
+                });
+            }
+        },
+        { passive: false } // Explicitly mark as non-passive to allow `preventDefault`
+    );
+
+    // Unified function for handling cursor/touch movement
+    function handleCursorMove(clientX, clientY, movementX, movementY) {
+        if (cursorMoved >= cursorMovementThreshold) {
+            console.log(`Changing image to: ${loadedImages[currentImageIndex].src}`); // Debugging log
+            imageElement.src = loadedImages[currentImageIndex].src;
+
+            const imgWidth = imageElement.offsetWidth;
+            const imgHeight = imageElement.offsetHeight;
+
+            imageElement.style.left = (clientX - imgWidth / 2) + 'px'; // Center image horizontally
+            imageElement.style.top = (clientY - imgHeight / 2) + 'px'; // Center image vertically
+            
+            cursorMoved = 0;
+            currentImageIndex = (currentImageIndex + 1) % loadedImages.length; // Cycle through images
+        }
+
+        cursorMoved += Math.abs(movementX) / window.innerWidth + Math.abs(movementY) / window.innerHeight;
+
+        // Update tooltip position
+        tooltipElement.style.left = (clientX + 30) + 'px'; // 30 pixels to the right of cursor
+        tooltipElement.style.top = (clientY + 30) + 'px'; // 30 pixels below cursor
+    }
 </script>
 
 </body>
