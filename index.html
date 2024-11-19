@@ -78,42 +78,30 @@
     let isThrottled = false;
 
     document.addEventListener('mousemove', (event) => {
-    handleCursorMove(event.clientX, event.clientY, event.movementX, event.movementY);
-});
+        if (!isThrottled) {
+            isThrottled = true;
 
-document.addEventListener('touchmove', (event) => {
-    event.preventDefault();  // Prevent default scroll behavior
-    const touch = event.touches[0]; // Get the first touch point
-    handleCursorMove(touch.clientX, touch.clientY, 0, 0); // No movementX/Y for touch
-});
+            requestAnimationFrame(() => {
+                if (cursorMoved >= cursorMovementThreshold) {
+                    imageElement.src = loadedImages[currentImageIndex].src;
+                    const imgWidth = imageElement.offsetWidth;
+                    const imgHeight = imageElement.offsetHeight;
 
-// Unified function for handling cursor/touch movement
-function handleCursorMove(clientX, clientY, movementX, movementY) {
-    if (!isThrottled) {
-        isThrottled = true;
+                    imageElement.style.left = (event.clientX - imgWidth / 2) + 'px'; // Position the image
+                    imageElement.style.top = (event.clientY - imgHeight / 2) + 'px'; // Position the image
+                    
+                    cursorMoved = 0;
+                    currentImageIndex = (currentImageIndex + 1) % loadedImages.length; // Cycle through images
+                }
+                cursorMoved += Math.abs(event.movementX) / window.innerWidth + Math.abs(event.movementY) / window.innerHeight;
+                isThrottled = false;
 
-        requestAnimationFrame(() => {
-            if (cursorMoved >= cursorMovementThreshold) {
-                imageElement.src = loadedImages[currentImageIndex].src;
-                const imgWidth = imageElement.offsetWidth;
-                const imgHeight = imageElement.offsetHeight;
-
-                imageElement.style.left = (clientX - imgWidth / 2) + 'px';
-                imageElement.style.top = (clientY - imgHeight / 2) + 'px';
-
-                cursorMoved = 0;
-                currentImageIndex = (currentImageIndex + 1) % loadedImages.length;
-            }
-            cursorMoved += Math.abs(movementX) / window.innerWidth + Math.abs(movementY) / window.innerHeight;
-            isThrottled = false;
-
-            tooltipElement.style.left = (clientX + 30) + 'px';
-            tooltipElement.style.top = (clientY + 30) + 'px';
-        });
-    }
-}
-
-
+                // Update tooltip position
+                tooltipElement.style.left = (event.clientX + 30) + 'px'; // 30 pixels right of cursor
+                tooltipElement.style.top = (event.clientY + 30) + 'px'; // 30 pixels below cursor
+            });
+        }
+    });
 
     // Show tooltip on page load
    // const showTooltip = () => {
