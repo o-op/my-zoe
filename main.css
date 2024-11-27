@@ -387,7 +387,12 @@ li {
 @media (max-width: 767px) {
     .overlay-content {
         flex-direction: column; /* Stack the columns vertically */
-        justify-content: flex-start; /* Align the columns from the top */
+        justify-content: flex-start; /* Align the columns from the top */;
+    }
+
+    .overlay-content * {
+        font-size: 60%; /* Reduce font size of all child elements */
+        
     }
 
     .column {
