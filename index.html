@@ -80,7 +80,6 @@
     let isThrottled = false;
 
     document.addEventListener('mousemove', (event) => {
-        console.log('Mouse moved');
         if (!isThrottled) {
             isThrottled = true;
 
@@ -98,7 +97,6 @@
     // Touchmove event
     document.addEventListener(
         'touchmove',
-        console.log('Touch moved');
         (event) => {
             event.preventDefault(); // Prevent default scroll behavior
 
