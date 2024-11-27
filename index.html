@@ -18,7 +18,7 @@
     <div class="nav-items">
         <a href="editorial.html" class="nav-item">EDITORIAL</a>
         <a href="commissioned.html" class="nav-item">COMMISSIONED</a>
-        <a href="about.html" class="nav-item">ABOUT</a>
+        <a href="javascript:void(0);" id="about-link" class="nav-item">ABOUT</a>
     </div>
 </nav>
 
@@ -27,6 +27,91 @@
 <div class="dot-container"></div>
 
 <div class="text-box" id="textBox">Make up artist</div>
+
+<!-- Full Page Overlay -->
+<div id="overlay" class="overlay">
+    <div id="close-overlay" class="close-overlay">X</div>
+
+    <!-- New Content Section (Two Columns) -->
+    <div class="overlay-content">
+        <!-- First Column (Personal Info and Contact) -->
+        <div id="first-column" class="column">
+            <h1>ZOË DERKS</h1>
+            <p>freelance makeup artist based in Brussels <br> and Paris, also offering hair styling <br> services on demand.</p>
+            <p><strong>Let’s get in touch &lt;3</strong></p>
+            <p>Email<br> 
+                <a href="mailto:zoe.derks.zd@gmail.com?subject=I%27d%20like%20to%20get%20in%20touch%20with%20you%20%3C3">
+                    zoe.derks.zd@gmail.com
+                </a>
+            </p>
+            <p>Instagram<br>
+                <a href="https://www.instagram.com/zoe.derks" target="_blank">
+                    @zoe.derks
+                </a>
+            </p>
+        </div>
+    
+        <!-- Second Column (Selected Publications) -->
+        <div id="second-column" class="column">
+            <h1>SELECTED PUBLICATIONS</h1>
+            <ul>
+                <li>Enfnts Terribles</li>
+                <li>Glamcult</li>
+                <li>KALTBLUT Magazine</li>
+                <li>MIRROR MIRROR Magazine</li>
+                <li>ODDA Korea</li>
+                <li>Pull Letter Magazine</li>
+                <li>Schön! Switzerland</li>
+                <li>Temple Magazine</li>
+            </ul>
+            <h1>SELECTED CLIENTS</h1>
+            <ul>
+                <li>Armani Beauty</li>
+                <li>Charles & Keith</li>
+                <li>Isabel Marant</li>
+                <li>Lore Van Keer</li>
+                <li>Méson Brussels</li>
+                <li>Milk of Lime</li>
+                <li>Naomi Gilon</li>
+                <li>Nike</li>
+                <li>Paradox Brussels</li>
+                <li>Simone Pérèle</li>
+                <li>Zara</li>
+            </ul>
+        </div>
+    
+        <!-- Third Column (Selected Fashion Shows and Music Videos) -->
+        <div id="third-column" class="column">
+            <h1>SELECTED FASHION SHOWS</h1>
+            <ul>
+                <li>Ann Demeulemeester, with Inge Grognard</li>
+                <li>Ashi Studio, with Lynsey Alexander</li>
+                <li>Balenciaga, with Inge Grognard</li>
+                <li>Diesel, with Inge Grognard</li>
+                <li>Isabel Marant, with Lisa Butler</li>
+                <li>Issey Miyake, with Anthony Preel</li>
+                <li>Louis Vuitton, with Ammy Drammeh</li>
+                <li>Ludovic de Saint Sernin, with Karin Westerlund</li>
+                <li>Marine Serre, with Janeen Witherspoon</li>
+                <li>Saint Laurent, with Karin Westerlund</li>
+                <li>Walter Van Beirendonck, with Jenneke Croubels</li>
+                <li>Y/Project, with Inge Grognard</li>
+            </ul>
+    
+            <h1>SELECTED MUSIC VIDEOS</h1>
+            <ul>
+                <li>CRC - JM Weston</li>
+                <li>CRC - Le sort des pétales</li>
+                <li>Ichon - + C’est pas le moment</li>
+                <li>More Eaze - a romance</li>
+                <li>Tessa Dixson - Bad Thoughts</li>
+            </ul>
+        </div>
+    </div>
+    
+</div>    
+</div>
+
 
 <script>
     const images = [
@@ -141,6 +226,28 @@
         tooltipElement.style.left = (clientX + 30) + 'px'; // 30 pixels to the right of cursor
         tooltipElement.style.top = (clientY + 30) + 'px'; // 30 pixels below cursor
     }
+
+    // Select the elements
+const overlay = document.getElementById('overlay');
+const closeOverlay = document.getElementById('close-overlay');
+const aboutLink = document.getElementById('about-link');
+
+// Show overlay when ABOUT link is clicked
+aboutLink.addEventListener('click', () => {
+    overlay.style.display = 'block'; // Show the overlay
+    setTimeout(() => {
+        overlay.classList.add('show'); // Apply fade-in effect
+    }, 10); // A small delay for better visual effect
+});
+
+// Hide overlay when the close button (X) is clicked
+closeOverlay.addEventListener('click', () => {
+    overlay.classList.remove('show'); // Start fade-out effect
+    setTimeout(() => {
+        overlay.style.display = 'none'; // Hide the overlay after fade-out completes
+    }, 300); // Match the fade-out duration (300ms)
+});
+
 </script>
 
 </body>

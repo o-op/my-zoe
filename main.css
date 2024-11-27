@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
         body {
+            background-color: #FF53CB; /* Temporarily set the background color */
             margin: 0;
             overflow: hidden;
             position: relative;
@@ -61,12 +62,14 @@
         transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
     }
 
+
+
 /* Responsive Navigation Menu (Mobile Only) */
 @media (max-width: 768px) {
     /* Ensure the navigation block (with Zoe Derks and menu items) is positioned correctly */
     nav {
         position: absolute;
-        top: 6vw; /* Slightly adjust top positioning */
+        top: 3vw; /* Slightly adjust top positioning */
         left: 3vw; /* Adjust left position */
         width: auto; /* Make width auto for mobile */
         padding: 0vw; /* Add padding to keep it away from edges */
@@ -133,7 +136,7 @@
 
         /* Dot container */
         .dot-container {
-            position: absolute;
+            position: fixed;
             bottom: 3vw;
             left: 5vw;
             width: 2.2vw; /* Match the approximate size of "O" in ZOË DERKS */
@@ -144,7 +147,7 @@
         }
 
 .text-box {
-    position: absolute;
+    position: fixed;
     bottom: 3vw; /* Align with the dot */
     left: calc(5vw + 2.7vw); /* Position it to the right of the dot */
     color: #FF53CB; /* Same color as the dot and ZOË DERKS text */
@@ -164,18 +167,18 @@
     .dot-container {
         width: 1.6rem; /* Larger dot for better visibility on mobile */
         height: 1.6rem; /* Maintain the circular shape */
-        bottom: 5vw; /* Adjust positioning for mobile */
-        left: 5vw; /* Adjust left positioning for mobile */
+        bottom: 3vw; /* Adjust positioning for mobile */
+        left: 3vw; /* Adjust left positioning for mobile */
     }
 
     /* Adjust text box size and positioning */
     .text-box {
         font-size: 1.089rem; /* Increase font size for better readability on small screens */
         left: calc(9vw); /* Adjust position relative to dot */
-        bottom: 5vw; /* Adjust spacing from the bottom */
+        bottom: 3vw; /* Adjust spacing from the bottom */
         padding: 0.3rem;
-        left: calc(5vw + 2rem); /* Adjust gap */
-        transform: translateY(0%); /* Ensure text is centered relative to dot */
+        left: calc(3vw + 2rem); /* Adjust gap */
+        transform: translateY(8%); /* Ensure text is centered relative to dot */
     }
 }
 
@@ -214,6 +217,7 @@
     }
 }
 
+
         input, textarea, select {
             cursor: url('assets/cursors/text.png'), auto;
         }
@@ -235,3 +239,161 @@
             display: none; /* Hidden by default */
             z-index: 2000; /* Increased z-index to ensure visibility */
         }
+
+/* Full-page overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Full viewport height */
+    background-color: #FF53CB; /* Pink background */
+    opacity: 0;
+    display: none;
+    z-index: 2001;
+    transition: opacity 0.3s ease;
+    overflow-y: auto; /* Make the entire overlay scrollable */
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS devices */
+}
+
+/* Hide the scrollbar (Webkit browsers) */
+.overlay::-webkit-scrollbar {
+    width: 0px; /* Hide vertical scrollbar */
+    height: 0px; /* Hide horizontal scrollbar */
+}
+
+/* Close button in the top-right corner */
+.close-overlay {
+    position: absolute;
+    top: 3vw;
+    right: 5vw;
+    font-family: 'Lato', sans-serif; /* Use the same font */
+    font-size: 3rem;
+    font-weight: 1000;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Ensure the overlay is shown with opacity when toggled */
+.overlay.show {
+    display: block;
+    opacity: 1; /* Fully visible when shown */
+}
+
+/* Overlay Content Layout */
+.overlay-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Control the space between columns */
+    padding: 20px;
+    justify-content: flex-start; /* Align columns from the start of the container */
+    margin-top: 6vw;
+    margin-left: 26vw;
+    margin-right: 26vw;
+    /* Remove the max-height restriction on overlay content */
+    /* max-height: 80vh; */
+    overflow-y: hidden; /* Prevent vertical scrolling within content */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Apply font styles to all columns */
+.column {
+    font-family: 'Lato', sans-serif;  /* Font family */
+    font-size: 0.8rem;                /* Font size */
+    font-weight: 650;                 /* Font weight */
+    letter-spacing: 0.2px;            /* Letter spacing */
+    color: #000;                  /* Text color */
+    line-height: 1.5;                /* Line height (adjust as needed) */
+}
+
+/* Headings */
+h1 {
+    font-weight: 650; /* Stronger weight for headings */
+    color: #000;
+    font-size: 1.0rem;
+    margin: 10px 0; /* Consistent spacing above and below headings */
+}
+
+/* Paragraphs and Text Formatting */
+p {
+    font-weight: 350; /* Lighter weight for paragraphs */
+    font-size: 1.0rem;
+    letter-spacing: 0.015rem;
+    color: #000;
+    margin: 8px 0; /* Reduced spacing between paragraphs */
+    line-height: 1.8;
+}
+
+/* Links */
+a {
+    color: #000;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none; /* Optionally, remove underline on hover */
+}
+
+/* List Styling */
+ul {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+li {
+    margin-bottom: 0px; /* Space between list items */
+    font-weight: 350;
+    font-size: 1.0rem; /* Adjust font size as needed */
+    line-height: 1.6; /* Adjust line height for more space between lines */
+}
+
+/* Adjust headers */
+.column h2 {
+    margin-top: 0;
+}
+
+/* For Larger Screens (Flexbox with three columns) */
+@media (min-width: 768px) {
+    .overlay-content {
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: flex-start; /* Align columns from the top */
+    }
+
+    /* First column takes full width on top of others */
+    #first-column {
+        width: 100%; /* Full width on top of other columns */
+        order: 1; /* Ensure it's placed first */
+    }
+
+    /* Second and third columns should take 48% width */
+    #second-column,
+    #third-column {
+        width: 48%; /* 48% width for second and third columns */
+        order: 2; /* Ensure they appear after the first column */
+    }
+
+    /* Removed margin-left from third column */
+    #third-column {
+        /* No margin needed */
+    }
+}
+
+/* For Smaller Screens (Mobile view) */
+@media (max-width: 767px) {
+    .overlay-content {
+        flex-direction: column; /* Stack the columns vertically */
+        justify-content: flex-start; /* Align the columns from the top */
+    }
+
+    .column {
+        width: 100%; /* Make each column take the full width */
+        margin-bottom: 20px; /* Space between columns */
+    }
+
+    /* Remove any left margin for the second and third columns */
+    #second-column,
+    #third-column {
+        margin-left: 0; /* Reset left margin on smaller screens */
+    }
+}
