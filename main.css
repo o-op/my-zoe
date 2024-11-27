@@ -296,6 +296,10 @@
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+.overlay-content * {
+    font-size: 96%; /* Reduce font size of all child elements */
+}
+
 /* Apply font styles to all columns */
 .column {
     font-family: 'Lato', sans-serif;  /* Font family */
