@@ -227,6 +227,7 @@
         tooltipElement.style.top = (clientY + 30) + 'px'; // 30 pixels below cursor
     }
 
+    
     // Select the elements
 const overlay = document.getElementById('overlay');
 const closeOverlay = document.getElementById('close-overlay');
@@ -247,6 +248,15 @@ closeOverlay.addEventListener('click', () => {
         overlay.style.display = 'none'; // Hide the overlay after fade-out completes
     }, 300); // Match the fade-out duration (300ms)
 });
+
+// Allow touchmove on the overlay
+document.getElementById('overlay').addEventListener(
+    'touchmove',
+    (event) => {
+        event.stopPropagation(); // Prevent touch from propagating, but allow scrolling
+    },
+    { passive: false }
+);
 
 </script>
 
