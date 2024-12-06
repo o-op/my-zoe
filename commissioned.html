@@ -194,6 +194,52 @@
 </div>
 
 <script>
+
+    // Reference to the arrow element
+    const swipeArrow = document.getElementById('swipe-arrow');
+    
+    // Show the arrow for 5 seconds
+    window.onload = () => {
+        swipeArrow.classList.add('show'); // Show the arrow initially
+    
+        setTimeout(() => {
+            swipeArrow.classList.remove('show'); // Hide it after 5 seconds if no action is taken
+        }, 5000);
+    };
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', hideArrow);
+    
+    // Listen for swipe actions (using touch events)
+    let touchStartX = 0;
+    
+    window.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].pageX;
+    });
+    
+    window.addEventListener('touchend', (event) => {
+        const touchEndX = event.changedTouches[0].pageX;
+        if (touchEndX < touchStartX) { // Swipe left
+            hideArrow();
+        }
+    });
+    
+    // Listen for arrow key presses to scroll the gallery
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            gallery.scrollBy({ left: 300, behavior: 'smooth' }); // Scroll right
+            hideArrow();
+        } else if (event.key === 'ArrowLeft') {
+            gallery.scrollBy({ left: -300, behavior: 'smooth' }); // Scroll left
+            hideArrow();
+        }
+    });
+    
+    // Function to hide the arrow
+    function hideArrow() {
+        swipeArrow.classList.remove('show'); // Remove the 'show' class to hide the arrow
+    }
+
     const gallery = document.getElementById('gallery');
     const textBoxElement = document.getElementById('text-box'); // Reference to the text box
     
@@ -246,50 +292,6 @@
         }, 300); // Match the fade-out duration (300ms)
     });
     
-    // Reference to the arrow element
-    const swipeArrow = document.getElementById('swipe-arrow');
-    
-    // Show the arrow for 5 seconds
-    window.onload = () => {
-        swipeArrow.classList.add('show'); // Show the arrow initially
-    
-        setTimeout(() => {
-            swipeArrow.classList.remove('show'); // Hide it after 5 seconds if no action is taken
-        }, 5000);
-    };
-    
-    // Listen for scroll events
-    window.addEventListener('scroll', hideArrow);
-    
-    // Listen for swipe actions (using touch events)
-    let touchStartX = 0;
-    
-    window.addEventListener('touchstart', (event) => {
-        touchStartX = event.changedTouches[0].pageX;
-    });
-    
-    window.addEventListener('touchend', (event) => {
-        const touchEndX = event.changedTouches[0].pageX;
-        if (touchEndX < touchStartX) { // Swipe left
-            hideArrow();
-        }
-    });
-    
-    // Listen for arrow key presses to scroll the gallery
-    window.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowRight') {
-            gallery.scrollBy({ left: 300, behavior: 'smooth' }); // Scroll right
-            hideArrow();
-        } else if (event.key === 'ArrowLeft') {
-            gallery.scrollBy({ left: -300, behavior: 'smooth' }); // Scroll left
-            hideArrow();
-        }
-    });
-    
-    // Function to hide the arrow
-    function hideArrow() {
-        swipeArrow.classList.remove('show'); // Remove the 'show' class to hide the arrow
-    }
     </script>
     
 
