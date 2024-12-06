@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: o-op.github.io/my-zoe
+  branch: main # or your default branch name
+
+media_folder: "assets/media" # Where uploaded images/videos will go
+public_folder: "/assets/media"
+
+collections:
+  - name: "media" # A section for adding images/videos
+    label: "Media"
+    folder: "assets/media"
+    create: true
+    fields:
+      - { label: "File", name: "file", widget: "file" }
+  
+  - name: "clients" # A section for managing your client list
+    label: "Clients"
+    folder: "_data" # Create a folder `_data` if it doesn’t exist
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Logo", name: "logo", widget: "image" }

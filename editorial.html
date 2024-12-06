@@ -71,6 +71,8 @@
     </div>
 </nav>
 
+<div id="swipe-arrow" class="swipe-arrow">→</div>
+
 <div class="dot-container"></div>
 <div class="text-box" id="text-box">Make up artist</div>
 
@@ -238,7 +240,50 @@ closeOverlay.addEventListener('click', () => {
         overlay.style.display = 'none'; // Hide the overlay after fade-out completes
     }, 300); // Match the fade-out duration (300ms)
 });
+
+// Reference to the arrow element
+const swipeArrow = document.getElementById('swipe-arrow');
+
+// Show the arrow for 5 seconds
+window.onload = () => {
+    swipeArrow.classList.add('show'); // Show the arrow initially
+
+    setTimeout(() => {
+        swipeArrow.classList.remove('show'); // Hide it after 5 seconds if no action is taken
+    }, 5000);
+};
+
+// Listen for scroll events
+window.addEventListener('scroll', hideArrow);
+
+// Listen for swipe actions (using touch events)
+let touchStartX = 0;
+
+window.addEventListener('touchstart', (event) => {
+    touchStartX = event.changedTouches[0].pageX;
+});
+
+window.addEventListener('touchend', (event) => {
+    const touchEndX = event.changedTouches[0].pageX;
+    if (touchEndX < touchStartX) { // Swipe left
+        hideArrow();
+    }
+});
+
+// Listen for arrow key presses
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        hideArrow();
+    }
+});
+
+// Function to hide the arrow
+function hideArrow() {
+    swipeArrow.classList.remove('show'); // Remove the 'show' class to hide the arrow
+}
+
 </script>
+
 
 </body>
 </html>

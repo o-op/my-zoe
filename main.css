@@ -240,6 +240,26 @@
             z-index: 2000; /* Increased z-index to ensure visibility */
         }
 
+
+/* Styling the arrow */
+.swipe-arrow {
+    position: fixed;
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Adjust the positioning */
+    font-size: 3rem; /* Set the size of the arrow */
+    color: #FF53CB;
+    opacity: 0; /* Initially visible */
+    transition: opacity 0.5s ease; /* Smooth transition */
+    z-index: 9999; /* Ensure it's on top */
+    pointer-events: none; /* Don't interact with the arrow */
+}
+
+
+.swipe-arrow.show {
+    opacity: 1; /* Make it visible */
+}
+
 /* Full-page overlay */
 .overlay {
     position: fixed;
@@ -254,6 +274,12 @@
     transition: opacity 0.3s ease;
     overflow-y: auto; /* Make the entire overlay scrollable */
     -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS devices */
+    padding-bottom: env(safe-area-inset-bottom); /* Adds safe area padding */
+    cursor: url('assets/cursors_overlay/cursor_black.png'), auto;
+}
+
+.overlay a, .overlay button {
+    cursor: url('assets/cursors_overlay/pointer_black.png'), pointer;
 }
 
 /* Hide the scrollbar (Webkit browsers) */
@@ -271,7 +297,7 @@
     font-size: 3rem;
     font-weight: 1000;
     color: #000;
-    cursor: pointer;
+    cursor: url('assets/cursors_overlay/pointer_black.png'), pointer;
 }
 
 /* Ensure the overlay is shown with opacity when toggled */
@@ -284,30 +310,33 @@
 .overlay-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Control the space between columns */
-    padding: 20px;
+    gap: 0vw; /* Control the space between columns */
+    padding: 0px;
     justify-content: flex-start; /* Align columns from the start of the container */
+    align-items: stretch;
     margin-top: 6vw;
-    margin-left: 26vw;
-    margin-right: 26vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
     /* Remove the max-height restriction on overlay content */
     /* max-height: 80vh; */
     overflow-y: hidden; /* Prevent vertical scrolling within content */
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-.overlay-content * {
-    font-size: 96%; /* Reduce font size of all child elements */
-}
+/* .overlay-content * {
+/*    font-size: 96%; /* Reduce font size of all child elements */
+/*}
 
 /* Apply font styles to all columns */
 .column {
+    white-space: normal;  /* Prevent text from wrapping to the next line */
     font-family: 'Lato', sans-serif;  /* Font family */
-    font-size: 0.8rem;                /* Font size */
+    font-size: 1.1rem;                /* Font size */
     font-weight: 650;                 /* Font weight */
     letter-spacing: 0.2px;            /* Letter spacing */
     color: #000;                  /* Text color */
     line-height: 1.5;                /* Line height (adjust as needed) */
+    
 }
 
 /* Headings */
@@ -315,7 +344,7 @@ h1 {
     font-weight: 650; /* Stronger weight for headings */
     color: #000;
     font-size: 1.0rem;
-    margin: 10px 0; /* Consistent spacing above and below headings */
+    margin: 3vh 0; /* Consistent spacing above and below headings */
 }
 
 /* Paragraphs and Text Formatting */
@@ -360,31 +389,34 @@ li {
 /* For Larger Screens (Flexbox with three columns) */
 @media (min-width: 768px) {
     .overlay-content {
-        flex-wrap: wrap; /* Allow wrapping */
-        justify-content: flex-start; /* Align columns from the top */
+        display: flex; /* Enable flex layout */
+        flex-wrap: wrap; /* Allow columns to wrap */
+        justify-content: flex-start; /* Align columns to the left */
     }
 
-    /* First column takes full width on top of others */
+    /* First column takes full width on top */
     #first-column {
-        width: 100%; /* Full width on top of other columns */
-        order: 1; /* Ensure it's placed first */
+        width: 100%; /* Full width */
+        order: 1; /* Ensure it appears first */
     }
 
-    /* Second and third columns should take 48% width */
+    /* Second and third columns should be side by side */
     #second-column,
     #third-column {
-        width: 48%; /* 48% width for second and third columns */
+        width: 48%; /* Each column takes up 48% width */
+        margin-right: 4%; /* Add space between columns */
         order: 2; /* Ensure they appear after the first column */
     }
 
-    /* Removed margin-left from third column */
+    /* Remove margin from the last column (third column) */
     #third-column {
-        /* No margin needed */
+        margin-right: 0; /* No margin on the last column */
     }
 }
 
 /* For Smaller Screens (Mobile view) */
 @media (max-width: 767px) {
+        
     .overlay-content {
         flex-direction: column; /* Stack the columns vertically */
         justify-content: flex-start; /* Align the columns from the top */;
@@ -397,7 +429,14 @@ li {
 
     .column {
         width: 100%; /* Make each column take the full width */
-        margin-bottom: 20px; /* Space between columns */
+        margin-bottom: 0vw; /* Space between columns */
+        font-size: 2rem;                /* Font size */
+        flex-grow: 1;
+        
+    }
+
+    .column * {
+        font-size: clamp(0.8rem, 2.0vw, 1.0rem); /* Responsive font size only on mobile */
     }
 
     /* Remove any left margin for the second and third columns */
@@ -405,4 +444,22 @@ li {
     #third-column {
         margin-left: 0; /* Reset left margin on smaller screens */
     }
+
+    #third-column {
+        margin-bottom: 150px; /* Add bottom margin (adjust as needed) */
+    }
+    ul {
+        list-style-type: none; /* Remove default bullets */
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        white-space: normal; /* Prevent text from wrapping if there’s enough space */
+        font-weight: 350;
+        font-size: 1.0rem; /* Adjust font size as needed */
+        line-height: 1.6;
+    }
+}
+}
 }
