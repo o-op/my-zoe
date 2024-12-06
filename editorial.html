@@ -71,7 +71,7 @@
     </div>
 </nav>
 
-<div id="swipe-arrow" class="swipe-arrow">→</div>
+<div id="swipe-arrow" class="swipe-arrow">></div>
 
 <div class="dot-container"></div>
 <div class="text-box" id="text-box">Make up artist</div>
@@ -189,100 +189,104 @@
 </div>
 
 <script>
-const gallery = document.getElementById('gallery');
-const textBoxElement = document.getElementById('text-box'); // Reference to the text box
-
-const imagesAndVideos = Array.from(gallery.querySelectorAll('img, video'));
-
-imagesAndVideos.forEach((item) => {
-    item.addEventListener('mouseenter', (event) => {
-        // Update the text box content with the hover text
-        textBoxElement.innerText = item.getAttribute('data-hover-text'); // Set text box text
+    const gallery = document.getElementById('gallery');
+    const textBoxElement = document.getElementById('text-box'); // Reference to the text box
+    
+    const imagesAndVideos = Array.from(gallery.querySelectorAll('img, video'));
+    
+    imagesAndVideos.forEach((item) => {
+        item.addEventListener('mouseenter', (event) => {
+            // Update the text box content with the hover text
+            textBoxElement.innerText = item.getAttribute('data-hover-text'); // Set text box text
+        });
+    
+        item.addEventListener('mouseleave', () => {
+            // Optionally hide or reset the text box text
+            textBoxElement.innerText = 'Make up artist'; // Reset to default text
+        });
     });
-
-    item.addEventListener('mouseleave', () => {
-        // Optionally hide or reset the text box text
-        textBoxElement.innerText = 'Make up artist'; // Reset to default text
+    
+    // Function to open modal
+    function openModal(imageSrc) {
+        const modal = document.getElementById('myModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageSrc;
+        modal.style.display = 'flex'; // Show the modal
+    }
+    
+    // Function to close modal
+    function closeModal() {
+        const modal = document.getElementById('myModal');
+        modal.style.display = 'none'; // Hide the modal
+    }
+    
+    // Overlay?
+    const overlay = document.getElementById('overlay');
+    const closeOverlay = document.getElementById('close-overlay');
+    const aboutLink = document.getElementById('about-link');
+    
+    // Show overlay when ABOUT link is clicked
+    aboutLink.addEventListener('click', () => {
+        overlay.style.display = 'block'; // Show the overlay
+        setTimeout(() => {
+            overlay.classList.add('show'); // Apply fade-in effect
+        }, 10); // A small delay for better visual effect
     });
-});
-
-// Function to open modal
-function openModal(imageSrc) {
-    const modal = document.getElementById('myModal');
-    const modalImage = document.getElementById('modalImage');
-    modalImage.src = imageSrc;
-    modal.style.display = 'flex'; // Show the modal
-}
-
-// Function to close modal
-function closeModal() {
-    const modal = document.getElementById('myModal');
-    modal.style.display = 'none'; // Hide the modal
-}
-
-// Overlay?
-const overlay = document.getElementById('overlay');
-const closeOverlay = document.getElementById('close-overlay');
-const aboutLink = document.getElementById('about-link');
-
-// Show overlay when ABOUT link is clicked
-aboutLink.addEventListener('click', () => {
-    overlay.style.display = 'block'; // Show the overlay
-    setTimeout(() => {
-        overlay.classList.add('show'); // Apply fade-in effect
-    }, 10); // A small delay for better visual effect
-});
-
-// Hide overlay when the close button (X) is clicked
-closeOverlay.addEventListener('click', () => {
-    overlay.classList.remove('show'); // Start fade-out effect
-    setTimeout(() => {
-        overlay.style.display = 'none'; // Hide the overlay after fade-out completes
-    }, 300); // Match the fade-out duration (300ms)
-});
-
-// Reference to the arrow element
-const swipeArrow = document.getElementById('swipe-arrow');
-
-// Show the arrow for 5 seconds
-window.onload = () => {
-    swipeArrow.classList.add('show'); // Show the arrow initially
-
-    setTimeout(() => {
-        swipeArrow.classList.remove('show'); // Hide it after 5 seconds if no action is taken
-    }, 5000);
-};
-
-// Listen for scroll events
-window.addEventListener('scroll', hideArrow);
-
-// Listen for swipe actions (using touch events)
-let touchStartX = 0;
-
-window.addEventListener('touchstart', (event) => {
-    touchStartX = event.changedTouches[0].pageX;
-});
-
-window.addEventListener('touchend', (event) => {
-    const touchEndX = event.changedTouches[0].pageX;
-    if (touchEndX < touchStartX) { // Swipe left
-        hideArrow();
+    
+    // Hide overlay when the close button (X) is clicked
+    closeOverlay.addEventListener('click', () => {
+        overlay.classList.remove('show'); // Start fade-out effect
+        setTimeout(() => {
+            overlay.style.display = 'none'; // Hide the overlay after fade-out completes
+        }, 300); // Match the fade-out duration (300ms)
+    });
+    
+    // Reference to the arrow element
+    const swipeArrow = document.getElementById('swipe-arrow');
+    
+    // Show the arrow for 5 seconds
+    window.onload = () => {
+        swipeArrow.classList.add('show'); // Show the arrow initially
+    
+        setTimeout(() => {
+            swipeArrow.classList.remove('show'); // Hide it after 5 seconds if no action is taken
+        }, 5000);
+    };
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', hideArrow);
+    
+    // Listen for swipe actions (using touch events)
+    let touchStartX = 0;
+    
+    window.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].pageX;
+    });
+    
+    window.addEventListener('touchend', (event) => {
+        const touchEndX = event.changedTouches[0].pageX;
+        if (touchEndX < touchStartX) { // Swipe left
+            hideArrow();
+        }
+    });
+    
+    // Listen for arrow key presses to scroll the gallery
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            gallery.scrollBy({ left: 300, behavior: 'smooth' }); // Scroll right
+            hideArrow();
+        } else if (event.key === 'ArrowLeft') {
+            gallery.scrollBy({ left: -300, behavior: 'smooth' }); // Scroll left
+            hideArrow();
+        }
+    });
+    
+    // Function to hide the arrow
+    function hideArrow() {
+        swipeArrow.classList.remove('show'); // Remove the 'show' class to hide the arrow
     }
-});
-
-// Listen for arrow key presses
-window.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-        hideArrow();
-    }
-});
-
-// Function to hide the arrow
-function hideArrow() {
-    swipeArrow.classList.remove('show'); // Remove the 'show' class to hide the arrow
-}
-
-</script>
+    </script>
+    
 
 
 </body>

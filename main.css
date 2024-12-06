@@ -245,7 +245,7 @@
 .swipe-arrow {
     position: fixed;
     top: 50%; /* Center it vertically */
-    left: 50%; /* Center it horizontally */
+    left: 96%; /* Center it horizontally */
     transform: translate(-50%, -50%); /* Adjust the positioning */
     font-size: 3rem; /* Set the size of the arrow */
     color: #FF53CB;
