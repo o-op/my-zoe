@@ -158,11 +158,11 @@
 
     // Initialize a single image element
     const initImageElement = () => {
-        imageElement = document.createElement('img');
-        imageElement.className = 'image';
-        imageElement.style.width = (Math.random() * (60 - 30) + 30) + 'vw'; // Set random width
-        document.body.appendChild(imageElement);
-    };
+    imageElement = document.createElement('img');
+    imageElement.className = 'image';
+    // Optionally, set random image size here if desired.
+    document.body.appendChild(imageElement);
+};
 
     initImageElement();
 

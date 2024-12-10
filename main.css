@@ -7,11 +7,18 @@
             overflow: hidden;
             position: relative;
             height: 100vh;
-            background-image: url('assets/media/background.webp');
+            background-image: url('assets/media/background-desktop.webp');
             background-size: cover;
             background-repeat: no-repeat; /* Prevent repeating of background */
             cursor: url('assets/cursors/arrow.png'), auto;
         }
+
+        /* Media query for mobile screens */
+@media (max-width: 768px) {
+         body {
+            background-image: url('assets/media/background-mobile.webp'); /* Background for mobile */
+        }
+}
 
         .image {
             position: absolute;
@@ -19,7 +26,25 @@
             pointer-events: none;
             transition: opacity 0.5s;
             will-change: opacity;
+            transition: width 0.3s ease; /* Optional: Smooth transition for resizing */
         }
+        
+        @media screen and (max-width: 768px) {
+            .image {
+                /* Styles for mobile */
+                width: 60vw;  /* Or any default size you want */
+            }
+        }
+        
+        @media screen and (min-width: 769px) {
+            .image {
+                /* Styles for desktop */
+                width: 40vw;  /* Or any default size you want */
+            }
+        }
+        
+
+
     
         /* This is the navigation menu: nav, zoe-derks, nav-items, nav-item*/ 
         
