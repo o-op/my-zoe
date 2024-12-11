@@ -7,7 +7,7 @@
             overflow: hidden;
             position: relative;
             height: 100vh;
-            background-image: url('assets/media/background-desktop.webp');
+            background-image: url('assets/media/background/background-desktop.webp');
             background-size: cover;
             background-repeat: no-repeat; /* Prevent repeating of background */
             cursor: url('assets/cursors/arrow.png'), auto;
@@ -16,7 +16,8 @@
         /* Media query for mobile screens */
 @media (max-width: 768px) {
          body {
-            background-image: url('assets/media/background-mobile.webp'); /* Background for mobile */
+            background-image: url('assets/media/background/background-mobile.webp'); /* Background for mobile */
+            background-position: center center; /* Center the background for mobile as well */
         }
 }
 
