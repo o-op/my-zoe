@@ -43,6 +43,13 @@
                 width: 40vw;  /* Or any default size you want */
             }
         }
+
+        /* Prevent stretching of images and videos in Microsoft Edge - delete if notwanted*/
+@supports (-ms-ime-align: auto) {
+    .image, img, video {
+        object-fit: cover; /* Ensures aspect ratio is maintained without stretching */
+    }
+}
         
 
 
