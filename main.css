@@ -232,6 +232,8 @@
         width: 1.15rem; /* Even larger dot for very small screens */
         height: 1.15rem; /* Keep it proportional */
         bottom: 5vw; /* Adjust bottom spacing */
+        transform: translateY(-7%); /* Ensure text is centered relative to dot */
+
     }
 
     /* Adjust text box size and position */
