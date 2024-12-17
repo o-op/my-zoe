@@ -5,6 +5,7 @@
             background-color: #FF53CB; /* Temporarily set the background color */
             margin: 0;
             overflow: hidden;
+            overflow-y: hidden;
             position: relative;
             height: 100vh;
             background-image: url('assets/media/background/background-desktop.webp');
