@@ -18,6 +18,7 @@
          body {
             background-image: url('assets/media/background/background-mobile.webp'); /* Background for mobile */
             background-position: center center; /* Center the background for mobile as well */
+            overflow-x: hidden;
         }
 }
 
@@ -30,6 +31,12 @@
             transition: width 0.3s ease; /* Optional: Smooth transition for resizing */
         }
         
+            /* Ensures that images and videos resize to fill the screen - maybe delete? */
+    .image, video {
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensures that the content fits within the container */
+    }
+    
         @media screen and (max-width: 768px) {
             .image {
                 /* Styles for mobile */
@@ -44,15 +51,15 @@
             }
         }
 
-/* Prevent stretching of images and videos in Microsoft Edge */
+/* Prevent stretching of images and videos in Microsoft Edge on mobile */
 @supports (-ms-ime-align: auto) {
     .image, img, video {
         object-fit: contain; /* Ensures the content fits within the box without stretching */
-        width: auto; /* Prevents forced scaling */
-        height: auto; /* Keeps the original proportions */
-        max-width: 100%; /* Ensures it doesn’t overflow the container */
-        max-height: 100%; /* Keeps it within container limits */
-        transform: scale(1); /* Prevents any unintended distortions */
+        width: 100%; /* Make sure it scales properly */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 100%; /* Prevents images from exceeding container */
+        max-height: 100%; /* Keeps content within bounds */
+        transform: scale(1); /* Prevents scaling artifacts */
     }
 }
         
