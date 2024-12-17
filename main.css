@@ -31,12 +31,6 @@
             transition: width 0.3s ease; /* Optional: Smooth transition for resizing */
         }
         
-            /* Ensures that images and videos resize to fill the screen - maybe delete? */
-    .image, video {
-        height: auto; /* Maintain aspect ratio */
-        object-fit: contain; /* Ensures that the content fits within the container */
-    }
-    
         @media screen and (max-width: 768px) {
             .image {
                 /* Styles for mobile */
@@ -51,12 +45,12 @@
             }
         }
 
-/* Prevent stretching of images and videos in Microsoft Edge on mobile */
-@supports (-ms-ime-align: auto) {
+/* Force object-fit containment for videos in mobile Edge */
+@media (max-width: 768px) {
     .image, img, video {
-        object-fit: contain; /* Ensures the content fits within the box without stretching */
-        width: 100%; /* Make sure it scales properly */
-        height: auto; /* Maintain aspect ratio */
+        object-fit: contain !important; /* Ensure it overrides any other rules */
+        width: 100% !important;
+        height: auto !important;
         max-width: 100%; /* Prevents images from exceeding container */
         max-height: 100%; /* Keeps content within bounds */
         transform: scale(1); /* Prevents scaling artifacts */
