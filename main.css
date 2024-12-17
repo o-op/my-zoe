@@ -45,12 +45,12 @@
             }
         }
 
-/* Force object-fit containment for videos in mobile Edge */
-@media (max-width: 768px) {
+/* Prevent stretching of images and videos in Microsoft Edge on mobile */
+@supports (-ms-ime-align: auto) {
     .image, img, video {
-        object-fit: contain !important; /* Ensure it overrides any other rules */
-        width: 100% !important;
-        height: auto !important;
+        object-fit: contain; /* Ensures the content fits within the box without stretching */
+        width: 100%; /* Make sure it scales properly */
+        height: auto; /* Maintain aspect ratio */
         max-width: 100%; /* Prevents images from exceeding container */
         max-height: 100%; /* Keeps content within bounds */
         transform: scale(1); /* Prevents scaling artifacts */
