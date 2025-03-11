@@ -278,24 +278,59 @@
         }
 
 
-/* Styling the arrow */
-.swipe-arrow {
+/* Basic styles for arrows */
+.arrow {
     position: fixed;
-    top: 50%; /* Center it vertically */
-    left: 96%; /* Center it horizontally */
-    transform: translate(-50%, -50%); /* Adjust the positioning */
-    font-size: 3rem; /* Set the size of the arrow */
-    color: #FF53CB;
-    opacity: 0; /* Initially visible */
-    transition: opacity 0.5s ease; /* Smooth transition */
-    z-index: 9999; /* Ensure it's on top */
-    pointer-events: none; /* Don't interact with the arrow */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem; /* Adjust size of the arrows */
+    color: #FF53CB; /* White color */
+    background-color: rgba(0, 0, 0, 0); /* Semi-transparent black background */
+    padding: 10px;
+    cursor:  url('assets/cursors/pointer.png'), pointer;
+    z-index: 1001; /* Make sure they appear on top */
+    display: block; /* Ensure the arrows are visible by default */
+    user-select: none; /* Prevent text selection (blocking highlighting) */
 }
 
 
-.swipe-arrow.show {
-    opacity: 1; /* Make it visible */
+/* Position the right arrow */
+#right-arrow {
+    right: 20px; /* 20px from the right edge */
 }
+
+/* Position the left arrow */
+#left-arrow {
+    left: 20px; /* 20px from the left edge */
+}
+
+/* Media Query for Desktop (larger screens) */
+@media (min-width: 1024px) {
+    /* Initially show the right arrow */
+    #right-arrow {
+        display: block; /* Show the right arrow */
+    }
+
+    /* Initially hide the left arrow */
+    #left-arrow {
+        display: none; /* Hide the left arrow */
+    }
+}
+
+/* Media Query for Mobile (smaller screens) */
+@media (max-width: 1023px) {
+    /* Initially show the right arrow */
+    #right-arrow {
+        display: block; /* Show the right arrow */
+    }
+
+    /* Initially hide the left arrow */
+    #left-arrow {
+        display: none; /* Hide the left arrow */
+    }
+}
+
+
 
 /* Full-page overlay */
 .overlay {

@@ -86,7 +86,8 @@
     </div>
 </nav>
 
-<div id="swipe-arrow" class="swipe-arrow">></div>
+<div id="left-arrow" class="arrow">&lt;</div>
+<div id="right-arrow" class="arrow">&gt;</div>
 
 <div class="dot-container"></div>
 <div class="text-box" id="text-box">Makeup artist</div>
@@ -257,28 +258,47 @@
         }, 300); // Match the fade-out duration (300ms)
     });
     
-    // Reference to the arrow element
-    const swipeArrow = document.getElementById('swipe-arrow');
-    
-    // Show the arrow for 5 seconds
-    document.addEventListener('DOMContentLoaded', () => {
-    swipeArrow.classList.add('show'); // Show the arrow initially
+    // Arrow functionality
+    document.addEventListener('DOMContentLoaded', function () {
+    const rightArrow = document.getElementById('right-arrow');
+    const leftArrow = document.getElementById('left-arrow');
+    const gallery = document.getElementById('gallery');
 
-    // Hide the arrow for 0.5 seconds after 2 seconds
-    setTimeout(() => {
-        swipeArrow.classList.remove('show'); // Hide the arrow briefly
-    }, 2000);
+    // Initially, show the right arrow and hide the left arrow
+    rightArrow.style.display = 'block';
+    leftArrow.style.display = 'none';
 
-    // Show the arrow again after 2.5 seconds
-    setTimeout(() => {
-        swipeArrow.classList.add('show'); // Show the arrow again
-    }, 2500);
+    // Scroll functionality to hide/show arrows based on gallery position
+    gallery.addEventListener('scroll', function () {
+        const isAtStart = gallery.scrollLeft === 0;
+        const isAtEnd = gallery.scrollLeft + gallery.offsetWidth === gallery.scrollWidth;
 
-    // Finally hide the arrow after 5 seconds
-    setTimeout(() => {
-        swipeArrow.classList.remove('show'); // Hide the arrow after 5 seconds
-    }, 5000);
+        if (isAtStart) {
+            // At the start: show right arrow, hide left arrow
+            rightArrow.style.display = 'block';
+            leftArrow.style.display = 'none';
+        } else if (isAtEnd) {
+            // At the end: show left arrow, hide right arrow
+            rightArrow.style.display = 'none';
+            leftArrow.style.display = 'block';
+        } else {
+            // In the middle: both arrows are visible
+            rightArrow.style.display = 'block';
+            leftArrow.style.display = 'block';
+        }
+    });
+
+    // Click on the right arrow to scroll to the next image
+    rightArrow.addEventListener('click', function () {
+        gallery.scrollBy({ left: gallery.offsetWidth, behavior: 'smooth' });
+    });
+
+    // Click on the left arrow to scroll to the previous image
+    leftArrow.addEventListener('click', function () {
+        gallery.scrollBy({ left: -gallery.offsetWidth, behavior: 'smooth' });
+    });
 });
+
     
     // Listen for scroll events
     window.addEventListener('scroll', hideArrow);
@@ -350,6 +370,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.querySelectorAll('.arrow').forEach(arrow => {
+    // Prevent text selection behavior when double-clicking
+    arrow.addEventListener('mousedown', (e) => {
+        e.preventDefault();  // Prevent the default action that selects text
+    });
+});
+
 
     </script>
     
